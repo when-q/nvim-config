@@ -18,11 +18,6 @@ nmap('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 nmap('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 nmap('g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
 
-
---require'lspconfig'.julials.setup{}
---require'lspconfig'.zls.setup{}
---require'lspconfig'.pyright.setup{}
---require'lspconfig'.clangd.setup{}
 local lsp = require "lspconfig"
 local coq = require "coq" -- add this
 
@@ -51,7 +46,6 @@ vim.o.updatetime = 1
 
 vim.cmd
 [[
-	autocmd Filetype julia setlocal omnifunc=v:lua.vim.lsp.omnifunc
 	autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 ]]
 
