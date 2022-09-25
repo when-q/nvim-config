@@ -29,7 +29,8 @@ vim.g['vimtex_view_general_viewer'] = 'zathura'
 vim.g['python_highlight_all'] = 1
 vim.g.smartindent = 1
 vim.g.mapleader = ' ' 
-set.conceallevel=1
+set.conceallevel= 2
+vim.opt.concealcursor = 'nc'
 vim.g['zig_fmt_autosave'] = 0
 vim.g.maplocalleader ="\\"
 vim.g.coq_settings = 
@@ -56,23 +57,8 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 
-
-vim.cmd[[
-	fun Resize()
-		if &buftype == 'nofile' 
-			execute ":vertical resize 30\<CR>"
-		endif
-	endfun
-
-	autocmd BufEnter * call Resize()
-]]
-
---vim.cmd[[au BufNew * if &buftype ==# "nofile" | wincmd _ | endif]]
-
-
-
 map('n', '<Leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', {noremap = true})
-map('n', '<Leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', {noremap = true})
+map('n', '<Leader>fm', '<cmd>lua require(\'utils\').grep_notes()<cr>', { noremap = true, silent = true })
 map('n', '<Leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', {noremap = true})
 map('n', '<Leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', {noremap = true})
 map('n', '<Leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', {noremap = true})
@@ -80,8 +66,8 @@ map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap=true})
 map('n', '<Leader> ', ':noh<CR>', {noremap=true})
 map('o', 'nc', '<cmd>normal! f{vi{<cr>', {noremap=true})
 map('o', 'nr', '<cmd>normal! f(vi(<cr>', {noremap=true})
-vim.g['tmux_navigator_no_mappings'] = 1
 
+vim.g['tmux_navigator_no_mappings'] = 1
 map('n', "<c-h>", ":TmuxNavigateLeft<cr>", {noremap=true})
 map('n', "<c-l>", ":TmuxNavigateRight<cr>", {noremap=true})
 map('n', "<c-j>", ":TmuxNavigateDown<cr>", {noremap=true})

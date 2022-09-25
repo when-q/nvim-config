@@ -16,7 +16,6 @@ return require('packer').startup(function(use)
   use 'rebelot/kanagawa.nvim'
   use 'rebelot/heirline.nvim'
   
---  use 'anuvyklack/windows.nvim'
   use 'christoomey/vim-tmux-navigator'
   use 
   {
@@ -29,7 +28,6 @@ return require('packer').startup(function(use)
   
   use 'TimUntersberger/neogit'
   use 'itchyny/vim-gitbranch'
-  use 'JuliaEditorSupport/julia-vim'
   use 'lervag/vimtex'
   
   use 'neovim/nvim-lspconfig'
@@ -41,7 +39,6 @@ return require('packer').startup(function(use)
   use 'ziglang/zig.vim'
   use 
   {
-	  
 	  'isovector/cornelis',
 	  run =  'stack build',
 	  requires = 
@@ -61,10 +58,8 @@ return require('packer').startup(function(use)
 		'tomtom/tcomment_vim'
 	  }
   }
-  use {"ellisonleao/glow.nvim"}
+  use 'ellisonleao/glow.nvim'
   use 'nvim-orgmode/orgmode'
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end
