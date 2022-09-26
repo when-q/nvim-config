@@ -1,18 +1,18 @@
 local map = vim.api.nvim_set_keymap
 
-local function map_cornelis()
-	map('n', '<leader>l', ':CornelisLoad<CR>', {noremap=true})
-	map('n', '<leader>r', ':CornelisRefine<CR>', {noremap=true})
-	map('n', '<leader>d', ':CornelisMakeCase<CR>', {noremap=true})
-	map('n', '<leader>,', ':CornelisTypeContext<CR>', {noremap=true})
-	map('<leader>.', ':CornelisTypeContextInfer<CR>', {noremap=true})
-	map('<leader>n', ':CornelisSolve<CR>', {noremap=true})
-	map('<leader>a', ':CornelisAuto<CR>', {noremap=true})
-	map('gd', ':CornelisGoToDefinition<CR>', {noremap=true})
-	map('gd', ':CornelisGoToDefinition<CR>', {noremap=true})
-	map('[/', ':CornelisPrevGoal<CR>', {noremap=true})
-	map(']/', ':CornelisNextGoal<CR>', {noremap=true})
 
+local function map_cornelis()
+       map('n', '<leader>l', ':CornelisLoad<CR>', {noremap=true})
+       map('n', '<leader>r', ':CornelisRefine<CR>', {noremap=true})
+       map('n', '<leader>d', ':CornelisMakeCase<CR>', {noremap=true})
+       map('n', '<leader>,', ':CornelisTypeContext<CR>', {noremap=true})
+       map('<leader>.', ':CornelisTypeContextInfer<CR>', {noremap=true})
+       map('<leader>n', ':CornelisSolve<CR>', {noremap=true})
+       map('<leader>a', ':CornelisAuto<CR>', {noremap=true})
+       map('gd', ':CornelisGoToDefinition<CR>', {noremap=true})
+       map('gd', ':CornelisGoToDefinition<CR>', {noremap=true})
+       map('[/', ':CornelisPrevGoal<CR>', {noremap=true})
+       map(']/', ':CornelisNextGoal<CR>', {noremap=true})
 end
 
 local function agda_tab ()

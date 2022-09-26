@@ -104,32 +104,43 @@ local ViMode =
 }
 
 
-
+local FileFlags = {
+    {
+        condition = function()
+            return vim.bo.modified
+        end,
+        provider = "[+]",
+        hl = { fg = "green" },
+    },
+    {
+        condition = function()
+            return not vim.bo.modifiable or vim.bo.readonly
+        end,
+        provider = "",
+        hl = { fg = "orange" },
+    },
+}
 
 
 -- (vim.fn.haslocaldir(0) == 1 and "l" or "g") .. " " .. 
 
 local WorkDir = {
     provider = function()
-        local icon =" "
+--        local icon =" "
         local cwd = vim.fn.expand('%')
         cwd = vim.fn.fnamemodify(cwd, ":~")
---        if not conditions.width_percent_below(#cwd, 0.25) then
---            cwd = vim.fn.pathshorten(cwd)
---        end
- --       local trail = cwd:sub(-1) == '/' and '' or "/"
-        return icon .. cwd  --.. trail
+--        return icon .. cwd  --.. trail
+		return cwd
     end,
     hl = { fg = utils.get_highlight("Directory").fg },
 }
 
 
-ViMode = utils.surround({ "", "" }, "bg",{ ViMode})
 
 local DefaultStatusline = 
 {
 
-    ViMode, Separator,  WorkDir, Space
+    ViMode, Space, Separator, FileFlags, Space, WorkDir, Space
 }
 
 local InactiveStatusline = 
@@ -138,7 +149,7 @@ local InactiveStatusline =
         return not conditions.is_active()
     end,
 
-    Separator, FileName, Align,
+    Separator, FileName, Align
 }
 
 
