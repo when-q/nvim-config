@@ -18,6 +18,7 @@ nmap('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 nmap('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 nmap('g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
 
+
 local lsp = require "lspconfig"
 local coq = require "coq" -- add this
 

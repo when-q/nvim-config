@@ -45,17 +45,6 @@ vim.g.coq_settings =
 
 vim.g['cornelis_split_location'] = 'right'
 
-vim.api.nvim_create_autocmd("FileType", 
-{
-	pattern = "lagda.md",
-	command = "set filetype=agda.markdown"
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = {"agda"},
-	command = "setlocal expandtab shiftwidth=2 tabstop=2"
-})
-
 
 map('n', '<Leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', {noremap = true})
 map('n', '<Leader>fm', '<cmd>lua require(\'utils\').grep_notes()<cr>', { noremap = true, silent = true })
