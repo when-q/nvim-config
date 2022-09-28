@@ -2,25 +2,26 @@ local map = vim.api.nvim_set_keymap
 
 
 local function map_cornelis()
-       map('n', '<leader>l', ':CornelisLoad<CR>', {noremap=true})
-       map('n', '<leader>r', ':CornelisRefine<CR>', {noremap=true})
-       map('n', '<leader>d', ':CornelisMakeCase<CR>', {noremap=true})
-       map('n', '<leader>,', ':CornelisTypeContext<CR>', {noremap=true})
-       map('<leader>.', ':CornelisTypeContextInfer<CR>', {noremap=true})
-       map('<leader>n', ':CornelisSolve<CR>', {noremap=true})
-       map('<leader>a', ':CornelisAuto<CR>', {noremap=true})
-       map('gd', ':CornelisGoToDefinition<CR>', {noremap=true})
-       map('gd', ':CornelisGoToDefinition<CR>', {noremap=true})
-       map('[/', ':CornelisPrevGoal<CR>', {noremap=true})
-       map(']/', ':CornelisNextGoal<CR>', {noremap=true})
-end
+	vim.cmd[[
+		nnoremap <buffer> <leader>l :CornelisLoad<CR>
+		nnoremap <buffer> <leader>r :CornelisRefine<CR>
+		nnoremap <buffer> <leader>d :CornelisMakeCase<CR>
+		nnoremap <buffer> <leader>, :CornelisTypeContext<CR>
+		nnoremap <buffer> <leader>. :CornelisTypeContextInfer<CR>
+		nnoremap <buffer> <leader>n :CornelisSolve<CR>
+		nnoremap <buffer> <leader>a :CornelisAuto<CR>
+		nnoremap <buffer> gd        :CornelisGoToDefinition<CR>
+		nnoremap <buffer> [/        :CornelisPrevGoal<CR>
+		nnoremap <buffer> ]/        :CornelisNextGoal<CR>
+	]]end
 
 local function agda_tab ()
 	vim.api.nvim_command("setlocal expandtab shiftwidth=2 tabstop=2")
 end
 
 local function agda_resize()
-	if vim.bo.buftype == 'nofile' then
+	local win_type = vim.fn.win_gettype()
+	if (vim.bo.buftype == 'nofile') and (win_type ~= 'popup') then
 		vim.api.nvim_command('vertical resize 30')
 	end
 end
