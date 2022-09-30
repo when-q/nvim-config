@@ -7,3 +7,8 @@ you need a pdf viewer + texlive, here zathura is used. Remove if you do not want
 
 ## TODO
 - [x] use a different plugin manager
+
+## First Time Setup
+```
+git clone --depth 1 https://github.com/when-q/nvim-config.git ~/.config
+```
