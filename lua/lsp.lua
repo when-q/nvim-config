@@ -24,22 +24,39 @@ local coq = require "coq" -- add this
 
 require'lspconfig'.pyright.setup(coq.lsp_ensure_capabilities())-- after
 require'lspconfig'.clangd.setup(coq.lsp_ensure_capabilities())
-require'lspconfig'.metals.setup(coq.lsp_ensure_capabilities())
+--require'lspconfig'.metals.setup(coq.lsp_ensure_capabilities())
 vim.g['coq_settings.keymap.manual_complete'] = "tab"
-
+local metals_config = require("metals").bare_config()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+metals_config.capabilities = require("coq").lsp_ensure_capabilities(capabilities)
 --require'lspconfig'.leanls.setup{}
 --commenting out because conflicts with lean.nvim
 require('lean').setup
 {
-	abbreviations = { builtin = true },
-	lsp = { on_attach = on_attach },
-	lsp3 = { on_attach = on_attach },
-	infoview = 
-	{
-		width = 30,
-		height = 20,
-	},
-	mappings = true
+  abbreviations = { builtin = true },
+  lsp = { on_attach = on_attach },
+  lsp3 = { on_attach = on_attach },
+  infoview =
+  {
+	width = 30,
+	height = 20,
+    horizontal_position = "bottom",
+
+  },
+  mappings = true,
+  abbreviations = {
+    -- Enable expanding of unicode abbreviations?
+    enable = true,
+    -- additional abbreviations:
+    extra = {
+      -- Add a \wknight abbreviation to insert ♘
+      --
+      -- Note that the backslash is implied, and that you of
+      -- course may also use a snippet engine directly to do
+      -- this if so desired.
+      wknight = '♘',
+    },
+  }
 }
 
 vim.o.updatetime = 1
@@ -135,3 +152,14 @@ vim.cmd [[
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
 
+local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  -- NOTE: You may or may not want java included here. You will need it if you
+  -- want basic Java support but it may also conflict if you are using
+  -- something like nvim-jdtls which also works on a java filetype autocmd.
+  pattern = { "scala", "sbt", "java" },
+  callback = function()
+    require("metals").initialize_or_attach(metals_config)
+  end,
+  group = nvim_metals_group,
+})

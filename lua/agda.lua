@@ -1,7 +1,20 @@
 local map = vim.api.nvim_set_keymap
 
-
-local function map_cornelis()
+-- TODO fix nvim mapping
+-- local function map_cornelis()
+--        map('n', '<leader>l', ':CornelisLoad<CR>', {noremap=true})
+--        map('n', '<leader>r', ':CornelisRefine<CR>', {noremap=true})
+--        map('n', '<leader>d', ':CorneliskeCase<CR>', {noremap=true})
+--        map('n', '<leader>,', ':CornelisTypeContext<CR>', {noremap=true})
+--        map('<leader>.', ':CornelisTypeContextInfer<CR>', {noremap=true})
+--        map('<leader>n', ':CornelisSolve<CR>', {noremap=true})
+--        map('<leader>a', ':CornelisAuto<CR>', {noremap=true, buffer=true})
+--        map('gd', ':CornelisGoToDefinition<CR>', {noremap=true})
+--        map('gd', ':CornelisGoToDefinition<CR>', {noremap=true})
+--        map('[/', ':CornelisPrevGoal<CR>', {noremap=true})
+--        map(']/', ':CornelisNextGoal<CR>', {noremap=true})
+-- end
+local function map_cornelis_vim()
 	vim.cmd[[
 		nnoremap <buffer> <leader>l :CornelisLoad<CR>
 		nnoremap <buffer> <leader>r :CornelisRefine<CR>
@@ -13,8 +26,8 @@ local function map_cornelis()
 		nnoremap <buffer> gd        :CornelisGoToDefinition<CR>
 		nnoremap <buffer> [/        :CornelisPrevGoal<CR>
 		nnoremap <buffer> ]/        :CornelisNextGoal<CR>
-	]]end
-
+	]]
+end
 local function agda_tab ()
 	vim.api.nvim_command("setlocal expandtab shiftwidth=2 tabstop=2")
 end
@@ -27,8 +40,9 @@ local function agda_resize()
 end
 
 local function agda_setup()
+	vim.cmd[[packadd cornelis]]
 	agda_tab()
-	map_cornelis()
+	map_cornelis_vim()
 end
 
 local agda_config = vim.api.nvim_create_augroup("agda_config", {clear=true})

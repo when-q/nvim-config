@@ -7,7 +7,10 @@ local Align = { provider = "%="}
 local Separator = { provider = " " }
 local Space = {provider = " "}
 
-local colors = require'kanagawa.colors'.setup() -- wink
+local colors = require'kanagawa.colors'.setup({
+    terminalColors = true,
+    theme = "default"
+}) -- wink
 require('heirline').load_colors(colors)
 
 local ViMode = 
@@ -106,18 +109,18 @@ local ViMode =
 
 local FileFlags = {
     {
-        condition = function()
-            return vim.bo.modified
-        end,
-        provider = "[+]",
-        hl = { fg = "green" },
+      condition = function()
+        return vim.bo.modified
+      end,
+      provider = "[+]",
+      hl = { fg = "green" },
     },
     {
-        condition = function()
-            return not vim.bo.modifiable or vim.bo.readonly
-        end,
-        provider = "",
-        hl = { fg = "orange" },
+      condition = function()
+          return not vim.bo.modifiable or vim.bo.readonly
+      end,
+      provider = "",
+      hl = { fg = "orange" },
     },
 }
 
@@ -125,40 +128,42 @@ local FileFlags = {
 -- (vim.fn.haslocaldir(0) == 1 and "l" or "g") .. " " .. 
 
 local WorkDir = {
-    provider = function()
+  provider = function()
 --        local icon =" "
-        local cwd = vim.fn.expand('%')
-        cwd = vim.fn.fnamemodify(cwd, ":~")
+    local cwd = vim.fn.expand('%')
+    cwd = vim.fn.fnamemodify(cwd, ":~")
 --        return icon .. cwd  --.. trail
-		return cwd
-    end,
-    hl = { fg = utils.get_highlight("Directory").fg },
+  return cwd
+  end,
+  hl =
+  {
+    fg = utils.get_highlight("Directory").bg,
+  },
 }
 
 
 
 local DefaultStatusline = 
 {
-
-    ViMode, Space, Separator, FileFlags, Space, WorkDir, Space
+  ViMode, Space, Separator, FileFlags, Space, WorkDir, Space
 }
 
 local InactiveStatusline = 
 {
-    condition = function()
-        return not conditions.is_active()
-    end,
+  condition = function()
+    return not conditions.is_active()
+  end,
 
-    Separator, FileName, Align
+  Separator, FileName, Align
 }
 
 
 local TerminalStatusline = 
 {
 
-    condition = function()
-        return conditions.buffer_matches({ buftype = { "terminal" } })
-    end,
+  condition = function()
+    return conditions.buffer_matches({ buftype = { "terminal" } })
+  end,
 
 
     -- Quickly add a condition to the ViMode to only show it when buffer is active!
@@ -166,19 +171,19 @@ local TerminalStatusline =
 }
 local SpecialStatusline = 
 {
-    condition = function()
-        return conditions.buffer_matches({
-            buftype = { "nofile", "prompt", "help", "quickfix" },
-            filetype = { "^git.*", "fugitive" },
-        })
-    end,
+  condition = function()
+    return conditions.buffer_matches({
+      buftype = { "nofile", "prompt", "help", "quickfix" },
+      filetype = { "^git.*", "fugitive" },
+    })
+  end,
 
      Separator, HelpFileName, Align
 }
 
 local StatusLines = 
 {
-    SpecialStatusline, TerminalStatusline, InactiveStatusline, DefaultStatusline,
+  SpecialStatusline, TerminalStatusline, InactiveStatusline, DefaultStatusline,
 	fallthrough = false,
 }
 require("heirline").setup(StatusLines)
