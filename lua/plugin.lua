@@ -6,9 +6,14 @@ require('nvim-tree').setup
   {
 	mappings =
 	{
-	  list= {{key = 'V',cb = tree_cb('vsplit')}}
+	  list= {{key = 'V',cb = tree_cb('vsplit')}} -- V to split
 	}
-  }
+  },
+  update_focused_file = 
+  {
+	enable = true,
+    update_cwd = true,
+  },
 }
 
 
@@ -53,18 +58,15 @@ require("neogit").setup
   },
   integrations =
   {
-
-    --
     diffview = true
   },
-  -- Setting any section to `false` will make the section not render at all
   sections = {
     untracked = {folded = false},
-    unstaged = {folded = false},
-    staged = {folded = false},
-    stashes = {folded = true},
-    unpulled = {folded = true},
-    unmerged = {folded = false},
+    unstaged  = {folded = false},
+    staged    = {folded = false},
+    stashes   = {folded = true},
+    unpulled  = {folded = true},
+    unmerged  = {folded = false},
     recent = {folded = true},
   },
   -- override/add mappings
