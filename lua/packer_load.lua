@@ -48,9 +48,11 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'windwp/nvim-autopairs'
   use 'nvim-treesitter/nvim-treesitter'
-  use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
-  use 'nvim-lua/plenary.nvim'
+  use 
+  {
+    'nvim-tree/nvim-tree.lua',
+    requires = {'nvim-tree/nvim-web-devicons'},
+  }
   use 
   {
 	'ziglang/zig.vim',
@@ -79,7 +81,6 @@ return require('packer').startup(function(use)
   }
   use 'ellisonleao/glow.nvim'
   use 'gennaro-tedesco/nvim-peekup'
-  use 'dstein64/vim-startuptime'
   use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
   if packer_bootstrap then
     require('packer').sync()
