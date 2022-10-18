@@ -26,7 +26,7 @@ fun! Start()
 
     " Now we can just write to the buffer, whatever you want.
 	let head = [
-	  \ 'Welcome to Neovim',
+	  \ 'Press SPC f o to show recently opened files.',
       \ '        o',
       \ '         o   ^__^',
       \ '          o  (oo)\_______',
