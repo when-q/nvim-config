@@ -8,7 +8,12 @@ require('nvim-tree').setup
 	{
 	  list= {{key = 'V',cb = tree_cb('vsplit')}}
 	}
-  }
+  },
+  update_focused_file = 
+  {
+	enable = true,
+    update_cwd = true,
+  },
 }
 
 
@@ -19,7 +24,6 @@ require'nvim-treesitter.configs'.setup
 	additional_vim_regex_highlighting = false,
   },
 }
-require('telescope').setup()
 require('nvim-autopairs').setup()
 require'nvim-web-devicons'.setup 
 {

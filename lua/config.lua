@@ -46,10 +46,8 @@ vim.g['cornelis_split_location'] = 'right'
 
 
 map('n', '<Leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', {noremap = true})
-map('n', '<Leader>fm', '<cmd>lua require(\'utils\').grep_notes()<cr>', { noremap = true, silent = true })
 map('n', '<Leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', {noremap = true})
 map('n', '<Leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', {noremap = true})
-map('n', '<Leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', {noremap = true})
 map('n', '<Leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', {noremap = true})
 map('n', '<Leader>fo', '<cmd>lua require(\'telescope.builtin\').oldfiles()<cr>', {noremap = true})
 map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap=true})
