@@ -75,12 +75,12 @@ return require('packer').startup(function(use)
     requires =
     {
       'nvim-lua/plenary.nvim',
-      'hrsh7th/vim-vsnip',
       'tomtom/tcomment_vim'
     }
   }
   use 'ellisonleao/glow.nvim'
   use 'gennaro-tedesco/nvim-peekup'
+  use 'SirVer/ultisnips'
   use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
   if packer_bootstrap then
     require('packer').sync()
