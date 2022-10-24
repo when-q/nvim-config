@@ -79,9 +79,10 @@ return require('packer').startup(function(use)
     }
   }
   use 'ellisonleao/glow.nvim'
-  use 'gennaro-tedesco/nvim-peekup'
   use 'SirVer/ultisnips'
   use 'ggandor/leap.nvim'
+  use 'KeitaNakamura/tex-conceal.vim'
+  use 'jakewvincent/texmagic.nvim'
   use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
   if packer_bootstrap then
     require('packer').sync()

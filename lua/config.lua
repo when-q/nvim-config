@@ -19,17 +19,22 @@ vim.cmd
 	autocmd BufNewFile,BufRead *.lagda.md set filetype=agda.markdown
 ]]
 
-vim.g['latex_to_unicode_auto'] = 1
+--vim.g['latex_to_unicode_auto'] = 1
+--vim.g['vimtex_compiler_engine'] = 'lualatex'
+--vim.g['vimtex_compiler_method'] = 'latexmk'
+--vim.g['vimtex_quickfix_mode']   = 0
+--vim.g['vimtex_view_general_viewer'] = 'skim' -- install skim
 vim.g['tex_flavor'] = 'lualatex'
-vim.g['vimtex_compiler_engine'] = 'lualatex'
-vim.g['vimtex_compiler_method'] = 'latexmk'
-vim.g['vimtex_quickfix_mode']   = 0
-vim.g['vimtex_view_general_viewer'] = 'skim' -- install skim
 vim.g['tex_conceal'] = 'abdmg'
+--vim.g['tex_superscripts'] = "[0-9a-zA-W.,:;+-<>/()=]"
+--vim.g['tex_subscripts'] = "[0-9aehijklmnoprstuvx,+-/().]"
+vim.g['tex_conceal_frac'] = 1
+
 vim.g['python_highlight_all'] = 1
+
 vim.g.smartindent = 1
+set.conceallevel= 2
 vim.g.mapleader = ' ' 
-set.conceallevel= 1
 vim.g['zig_fmt_autosave'] = 0
 
 vim.g.maplocalleader =","

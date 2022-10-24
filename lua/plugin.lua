@@ -83,11 +83,28 @@ require('glow').setup(
   style = "dark",
   width = 120,
 })
-require('nvim-peekup.config').geometry["title"] = 'Register List'
 
-require('leap').add_default_mappings()
+--require('leap').add_default_mappings()
 require('leap').setup 
 {
         case_sensitive = true,
 }
 
+
+-- Run setup and specify two custom build engines
+require('texmagic').setup{
+    engines = {
+        lualatex = {    -- This is *not* one of the defaults, but it can be
+                        -- called via magic comment if defined here
+            executable = "latexmk",
+            args = {
+                "-pdflua",
+                "-interaction=nonstopmode",
+                "-synctex=1",
+                "-pv",
+                "%f"
+            },
+            isContinuous = true
+        }
+    }
+}

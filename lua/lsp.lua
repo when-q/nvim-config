@@ -24,6 +24,7 @@ local coq = require "coq" -- add this
 
 require'lspconfig'.pyright.setup(coq.lsp_ensure_capabilities())-- after
 require'lspconfig'.clangd.setup(coq.lsp_ensure_capabilities())
+require'lspconfig'.texlab.setup(coq.lsp_ensure_capabilities())
 --require'lspconfig'.metals.setup(coq.lsp_ensure_capabilities())
 vim.g['coq_settings.keymap.manual_complete'] = "tab"
 local metals_config = require("metals").bare_config()
