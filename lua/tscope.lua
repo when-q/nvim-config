@@ -25,7 +25,7 @@ local options = {
 		  {
 			prompt_position = "top",
 			preview_width = 0.55,
-			results_width = 0.8,
+			results_width = 0.60,
 		  },
 		  vertical = {
 			mirror = true,
@@ -52,6 +52,15 @@ local options = {
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 		-- Developer configurations: Not meant for general override
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+		pickers = {
+			buffers = fixfolds,
+			find_files = fixfolds,
+			git_files = fixfolds,
+			grep_string = fixfolds,
+			live_grep = fixfolds,
+			oldfiles = fixfolds,
+		},
+
 	}
 	
 }
@@ -62,4 +71,5 @@ vim.cmd[[
 ]]
 
 telescope.setup(options)
+
 

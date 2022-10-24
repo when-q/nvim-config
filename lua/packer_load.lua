@@ -14,8 +14,8 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'rebelot/kanagawa.nvim'
+  use 'catppuccin/nvim'
 
-  use 'pappasam/papercolor-theme-slim'
   use 'sainnhe/everforest'
   use 'rebelot/heirline.nvim'
   
@@ -81,6 +81,7 @@ return require('packer').startup(function(use)
   use 'ellisonleao/glow.nvim'
   use 'gennaro-tedesco/nvim-peekup'
   use 'SirVer/ultisnips'
+  use 'ggandor/leap.nvim'
   use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
   if packer_bootstrap then
     require('packer').sync()

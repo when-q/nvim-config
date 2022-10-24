@@ -16,3 +16,12 @@ map('n', "<c-l>", ":TmuxNavigateRight<cr>", {noremap=true})
 map('n', "<c-j>", ":TmuxNavigateDown<cr>", {noremap=true})
 map('n', "<c-k>", ":TmuxNavigateUp<cr>", {noremap=true})
 
+
+
+vim.keymap.set('n', 'gs', '<Plug>(leap-forward-to)', {noremap=true})
+vim.keymap.set('n', 'gS', '<Plug>(leap-backword-to)', {noremap=true})
+vim.keymap.set({'x', 'o'}, 'gx', '<Plug>(leap-forward-till)', {noremap=true})
+vim.keymap.set({'n', 'x', 'o'}, 'gX','<Plug>(leap-backward-till)', {noremap=true})
+vim.keymap.set({'n', 'x', 'o'}, 'gX','<Plug>(leap-backward-till)', {noremap=true})
+vim.keymap.set({'n','x','o'},'ggs', '<Plug>(leap-cross-window)', {noremap=true})
+

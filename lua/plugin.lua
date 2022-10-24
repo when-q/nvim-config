@@ -85,3 +85,9 @@ require('glow').setup(
 })
 require('nvim-peekup.config').geometry["title"] = 'Register List'
 
+require('leap').add_default_mappings()
+require('leap').setup 
+{
+        case_sensitive = true,
+}
+
