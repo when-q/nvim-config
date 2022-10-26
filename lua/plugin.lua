@@ -49,8 +49,7 @@ require("neogit").setup
   popup = {kind = "split",},
   -- customize displayed signs
   signs = 
-  {
-    -- { CLOSED, OPENED }
+  { -- { CLOSED, OPENED }
 	section = { ">", "v" },
     item = { ">", "v" },
     hunk = { "", "" },
