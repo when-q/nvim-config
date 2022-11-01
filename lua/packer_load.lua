@@ -40,11 +40,7 @@ return require('packer').startup(function(use)
 	  'sindrets/diffview.nvim'
 	}
   }
-  use
-  {
-	'lervag/vimtex',
-	ft = 'tex'
-  }
+
   use 'neovim/nvim-lspconfig'
   use 'windwp/nvim-autopairs'
   use 'nvim-treesitter/nvim-treesitter'
@@ -58,17 +54,7 @@ return require('packer').startup(function(use)
 	'ziglang/zig.vim',
 	ft = {'zig'}
   }
-  use
-  {
-	'isovector/cornelis',
-	run = 'stack build',
-	requires =
-	{
-	  'neovimhaskell/nvim-hs.vim',
-	  'kana/vim-textobj-user',
-	  'liuchengxu/vim-which-key'
-	}
-  }
+
   use 
   {
     'Julian/lean.nvim',

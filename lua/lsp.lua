@@ -36,11 +36,9 @@ require('lean').setup
 {
   abbreviations = { builtin = true },
   lsp = { on_attach = on_attach },
-  lsp3 = { on_attach = on_attach },
   infoview =
   {
 	width = 30,
-	height = 20,
     horizontal_position = "bottom",
 
   },

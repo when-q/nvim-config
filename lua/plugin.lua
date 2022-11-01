@@ -89,7 +89,6 @@ require('leap').setup
         case_sensitive = true,
 }
 
-
 -- Run setup and specify two custom build engines
 require('texmagic').setup{
     engines = {
