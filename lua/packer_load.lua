@@ -12,9 +12,16 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
+
+	-- sourcing configurations with plugin
+  local plugin = require("setup.plugin")
+
   use 'wbthomason/packer.nvim'
   use 'rebelot/kanagawa.nvim'
   use 'rebelot/heirline.nvim'
+  use 'lewis6991/impatient.nvim'
+  use 'ms-jpq/coq_nvim'
+  use 'neovim/nvim-lspconfig'
   
   use 'christoomey/vim-tmux-navigator'
   use 
@@ -22,34 +29,49 @@ return require('packer').startup(function(use)
 	  'nvim-telescope/telescope.nvim',
 	  requires = {'nvim-lua/plenary.nvim'}
   }
-  
-  use 'ms-jpq/coq_nvim'
+
   use
   {
-    'TimUntersberger/neogit',
-    requires =
-    {
-      'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim'
-    }
+		'TimUntersberger/neogit',
+		requires =
+		{
+			'nvim-lua/plenary.nvim',
+			'sindrets/diffview.nvim'
+		},
+		config = plugin.neogit_setup,
+		cmd = "Neogit",
   }
-  use 'neovim/nvim-lspconfig'
-  use 'windwp/nvim-autopairs'
 
+  use 
+  {
+	  'windwp/nvim-autopairs',
+	  event = 'InsertEnter',
+	  config = plugin.pair_setup,
+  }
+  use 
+  {
+	'nvim-treesitter/nvim-treesitter',
+	config = plugin.ts_setup,
+	run = ":TSUpdate"
 
-  use 'nvim-treesitter/nvim-treesitter'
+  }
   use 
   {
     'nvim-tree/nvim-tree.lua',
-    requires = 
-    {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    },
+    requires = {'nvim-tree/nvim-web-devicons'},
+	config = plugin.tree_setup
+  }
+  use 
+  {
+	  'ellisonleao/glow.nvim',
+	  config = plugin.glow_setup
+  }
+  use 
+  {
+	  'ggandor/leap.nvim',
+	  config = plugin.leap_setup
   }
 
-
-  use 'ellisonleao/glow.nvim'
-  use 'gennaro-tedesco/nvim-peekup'
   if packer_bootstrap then
     require('packer').sync()
   end
