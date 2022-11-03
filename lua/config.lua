@@ -1,5 +1,4 @@
 local set = vim.o
-
 set.autoindent = true
 set.tabstop=4
 set.shiftwidth=4
@@ -18,9 +17,10 @@ vim.cmd
 	autocmd FileType vim let b:vcm_tab_complete = 'omni'
 	autocmd FileType zig setlocal expandtab
 	runtime macros/matchit.vim
-	autocmd BufNewFile,BufRead *.lagda.md set filetype=agda.markdown
 ]]
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 vim.g['tex_flavor'] = 'lualatex'
 vim.g['tex_conceal'] = 'abdmg'

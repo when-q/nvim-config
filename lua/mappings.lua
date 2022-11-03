@@ -6,7 +6,7 @@ map('n', '<Leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', 
 map('n', '<Leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', {noremap = true})
 map('n', '<Leader>fo', '<cmd>lua require(\'telescope.builtin\').oldfiles()<cr>', {noremap = true})
 -- NvimTree Mapping
-map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap=true})
+map('n', '<c-n>', ':NvimTreeToggle<CR>', {noremap=true})
 map('n', '<Leader> ', ':noh<CR>', {noremap=true})
 map('o', 'nc', '<cmd>normal! f{vi{<cr>', {noremap=true})
 map('o', 'nr', '<cmd>normal! f(vi(<cr>', {noremap=true})
