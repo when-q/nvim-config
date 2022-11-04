@@ -21,9 +21,9 @@ return require('packer').startup(function(use)
   use 'rebelot/heirline.nvim'
   use 'ms-jpq/coq_nvim'
   use 'SirVer/ultisnips'
-  
+
   use 'christoomey/vim-tmux-navigator'
-  use 
+  use
   {
 	  'nvim-telescope/telescope.nvim',
 	  requires = {'nvim-lua/plenary.nvim'},
@@ -46,25 +46,25 @@ return require('packer').startup(function(use)
   }
 
   use 'neovim/nvim-lspconfig'
-  use 
+  use
   {
 	  'windwp/nvim-autopairs',
 	  event = 'InsertEnter',
 	  config = plugin.pair_setup,
   }
-  use 
+  use
   {
 	  'nvim-treesitter/nvim-treesitter',
 		config = plugin.ts_setup
   }
-  use 
+  use
   {
     'nvim-tree/nvim-tree.lua',
     requires = {'nvim-tree/nvim-web-devicons'},
 	config = plugin.tree_setup,
   }
 
-  use 
+  use
   {
     'Julian/lean.nvim',
     requires =
@@ -75,35 +75,36 @@ return require('packer').startup(function(use)
 	config = plugin.lean_setup,
 	ft = {'lean'}
   }
-  use 
+  use
   {
 	  'ellisonleao/glow.nvim',
 	  config = plugin.glow_setup
   }
-  use 
+  use
   {
 	  'ggandor/leap.nvim',
 	  config = plugin.leap_setup
   }
   use {'KeitaNakamura/tex-conceal.vim', ft={'tex'}}
-  use 
+  use
   {
-	'jakewvincent/texmagic.nvim', 
+	'jakewvincent/texmagic.nvim',
   	ft = {'tex'},
 	config = plugin.tex_setup
   }
   use
   {
-	'scalameta/nvim-metals', 
+	'scalameta/nvim-metals',
   	requires = { "nvim-lua/plenary.nvim" },
-	ft = {'scala'}
+	config = plugin.scala_setup
+
   }
-  use 
+  use
   {
 	  'ggandor/leap.nvim',
 	  config = plugin.leap_setup
   }
-
+  use 'ziglang/zig.vim'
   if packer_bootstrap then
     require('packer').sync()
   end

@@ -1,7 +1,7 @@
 local present, telescope = pcall(require, "telescope")
 
 local options = {
-  defaults = 
+  defaults =
   {
 		vimgrep_arguments = {
 		  "rg",
@@ -19,9 +19,9 @@ local options = {
 		selection_strategy = "reset",
 		sorting_strategy = "ascending",
 		layout_strategy = "horizontal",
-		layout_config = 
+		layout_config =
 		{
-		  horizontal = 
+		  horizontal =
 		  {
 			prompt_position = "top",
 			preview_width = 0.55,
@@ -39,7 +39,7 @@ local options = {
 		path_display = { "truncate" },
 		winblend = 0,
 		border = {},
-		borderchars = 
+		borderchars =
 		{
 		  { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
 		  prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
@@ -62,7 +62,7 @@ local options = {
 		},
 
 	}
-	
+
 }
 vim.cmd[[
 	highlight TelescopePromptBorder guifg=#eeeeee      guibg=none     gui=none

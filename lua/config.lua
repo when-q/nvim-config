@@ -21,6 +21,7 @@ vim.cmd
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.zig_fmt_autosave = 0
 
 vim.g['tex_flavor'] = 'lualatex'
 vim.g['tex_conceal'] = 'abdmg'
@@ -30,13 +31,13 @@ vim.g['python_highlight_all'] = 1
 
 vim.g.smartindent = 1
 set.conceallevel= 2
-vim.g.mapleader = ' ' 
+vim.g.mapleader = ' '
 vim.g['zig_fmt_autosave'] = 0
 
 vim.g.maplocalleader =","
-vim.g.coq_settings = 
+vim.g.coq_settings =
 {
-	auto_start = 'shut-up', 
+	auto_start = 'shut-up',
     clients=
 	{
 		snippets = { warn = {} }

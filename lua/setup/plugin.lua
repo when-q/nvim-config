@@ -11,7 +11,7 @@ function M.tree_setup()
 		  list= {{key = 'V',action ='vsplit'}}
 		}
 	  },
-	  update_focused_file = 
+	  update_focused_file =
 	  {
 		enable = true,
 		update_cwd = true,
@@ -20,8 +20,8 @@ function M.tree_setup()
 end
 
 function M.ts_setup()
-	require'nvim-treesitter.configs'.setup 
-	{ highlight = 
+	require'nvim-treesitter.configs'.setup
+	{ highlight =
 	  {
 		enable = true,
 		additional_vim_regex_highlighting = false,
@@ -72,7 +72,7 @@ end
 
 
 function M.leap_setup()
-	require('leap').setup 
+	require('leap').setup
 	{
 		case_sensitive = true,
 	}
@@ -84,4 +84,21 @@ function M.lean_setup()
 	}
 
 end
+function M.scala_setup()
+	local metals_config = require("metals").bare_config()
+--	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	metals_config.capabilities = require("coq").lsp_ensure_capabilities()
+	local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+	vim.api.nvim_create_autocmd("FileType", {
+	  -- NOTE: You may or may not want java included here. You will need it if you
+	  -- want basic Java support but it may also conflict if you are using
+	  -- something like nvim-jdtls which also works on a java filetype autocmd.
+	  pattern = { "scala", "sbt", "java" },
+	  callback = function()
+		require("metals").initialize_or_attach(metals_config)
+	  end,
+	  group = nvim_metals_group,
+	})
+end
+
 return M
