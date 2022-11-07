@@ -60,7 +60,6 @@ local options = {
 			live_grep = fixfolds,
 			oldfiles = fixfolds,
 		},
-
 	}
 
 }

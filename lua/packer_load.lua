@@ -80,11 +80,7 @@ return require('packer').startup(function(use)
 	  'ellisonleao/glow.nvim',
 	  config = plugin.glow_setup
   }
-  use
-  {
-	  'ggandor/leap.nvim',
-	  config = plugin.leap_setup
-  }
+
   use {'KeitaNakamura/tex-conceal.vim', ft={'tex'}}
   use
   {
@@ -95,7 +91,7 @@ return require('packer').startup(function(use)
   use
   {
 	'scalameta/nvim-metals',
-  	requires = { "nvim-lua/plenary.nvim" },
+  	requires = {"nvim-lua/plenary.nvim"},
 	config = plugin.scala_setup
 
   }

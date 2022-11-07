@@ -1,5 +1,4 @@
 local M = {}
-local map = vim.api.nvim_set_keymap
 vim.o.termguicolors = true
 function M.tree_setup()
 	require('nvim-tree').setup
@@ -79,8 +78,12 @@ function M.leap_setup()
 end
 
 function M.lean_setup()
-	require('lean').setup{
-		infoview = {width = 30}
+	require('lean').setup
+	{
+	  abbreviations = { builtin = true },
+	  lsp = {on_attach = require('setup.lsp_keymaps').on_attach},
+	  infoview = {width = 30},
+	  mappings = true,
 	}
 
 end
@@ -89,6 +92,8 @@ function M.scala_setup()
 --	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	metals_config.capabilities = require("coq").lsp_ensure_capabilities()
 	local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+
+	metals_config.on_attach = require('setup.lsp_keymaps').on_attach
 	vim.api.nvim_create_autocmd("FileType", {
 	  -- NOTE: You may or may not want java included here. You will need it if you
 	  -- want basic Java support but it may also conflict if you are using

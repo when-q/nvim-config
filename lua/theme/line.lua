@@ -3,17 +3,17 @@ local utils = require("heirline.utils")
 
 local Align = { provider = "%="}
 --Heirline: utils.pick_child_on_condition() is deprecated, please use the fallthrough field instead. To retain the same functionality, replace `init = utils.pick_child_on_condition()` with `fallthrough = false`  
-    
+
 local Separator = { provider = " " }
 local Space = {provider = " "}
 
 local colors = require'kanagawa.colors'.setup({
-    terminalColors = true,
+    terminalColors = 'true',
     theme = "default"
 }) -- wink
 require('heirline').load_colors(colors)
 
-local ViMode = 
+local ViMode =
 {
     -- get vim current mode, this information will be required by the provider
     -- and the highlight functions, so we compute it only once per component
@@ -148,7 +148,7 @@ local DefaultStatusline =
   ViMode, Space, Separator, FileFlags, Space, WorkDir, Space
 }
 
-local InactiveStatusline = 
+local InactiveStatusline =
 {
   condition = function()
     return not conditions.is_active()

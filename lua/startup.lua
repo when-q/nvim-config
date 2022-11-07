@@ -77,8 +77,6 @@ fun! s:disable_statusline(bn)
    endif
 endfun
 
-
-
 " Run after "doing all the startup stuff"
 
 autocmd VimEnter * call Start()

@@ -1,53 +1,19 @@
-local set_keymap = vim.api.nvim_set_keymap
+local lsp_keymap = require('setup.lsp_keymaps')
 
--- map the leader key
--- 'vim.g' sets global variables
-
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '\\e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '\\q', vim.diagnostic.setloclist, opts)
-
-local on_attach = function(client, bufnr)
-	-- Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set('n', '\\wa', vim.lsp.buf.add_workspace_folder, bufopts)
-	vim.keymap.set('n', '\\wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-	vim.keymap.set('n', '\\wl', function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, bufopts)
-	vim.keymap.set('n', '\\D', vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set('n', '\\rn', vim.lsp.buf.rename, bufopts)
-	vim.keymap.set('n', '\\ca', vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-	vim.keymap.set('n', '\\f', function() vim.lsp.buf.format { async = true } end, bufopts)
-end
-
-
-local lsp = require "lspconfig"
 local coq = require "coq" -- add this
 require('lspconfig')['pyright'].setup
 {
-	on_attach = on_attach,
+	on_attach = lsp_keymap.on_attach,
 	capabilities = coq.lsp_ensure_capabilities()
 }
 require('lspconfig')['clangd'].setup
 {
-	on_attach = on_attach,
+	on_attach = lsp_keymap.on_attach,
 	capabilities = coq.lsp_ensure_capabilities()
 }
 require('lspconfig')['texlab'].setup
 {
-	on_attach = on_attach,
+	on_attach = lsp_keymap.on_attach,
 	capabilities = coq.lsp_ensure_capabilities()
 }
 
@@ -72,23 +38,20 @@ require 'lspconfig'.sumneko_lua.setup {
 			},
 		},
 	},
-	on_attach = on_attach,
+	on_attach = lsp_keymap.on_attach,
 	capatibilites = coq.lsp_ensure_capabilities()
 }
 --require'lspconfig'.sumneko_lua.setup()
 --require'lspconfig'.metals.setup(coq.lsp_ensure_capabilities())
-vim.g['coq_settings.keymap.manual_complete'] = "tab"
+vim.g.coq_settings.keymap.manual_complete = "tab"
 --require'lspconfig'.leanls.setup{}
 --commenting out because conflicts with lean.nvim
 vim.o.updatetime = 1
-
 
 vim.cmd
 [[
 	autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 ]]
-
-
 
 local border = {
 	{ "🭽", "FloatBorder" },
@@ -100,7 +63,6 @@ local border = {
 	{ "🭼", "FloatBorder" },
 	{ "▏", "FloatBorder" },
 }
-
 
 local handlers = {
 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
@@ -171,5 +133,3 @@ vim.cmd [[
 ]]
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
---
---
