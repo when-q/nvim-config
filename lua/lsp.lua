@@ -43,9 +43,9 @@ require 'lspconfig'.sumneko_lua.setup {
 }
 --require'lspconfig'.sumneko_lua.setup()
 --require'lspconfig'.metals.setup(coq.lsp_ensure_capabilities())
-vim.g.coq_settings.keymap.manual_complete = "tab"
 --require'lspconfig'.leanls.setup{}
 --commenting out because conflicts with lean.nvim
+
 vim.o.updatetime = 1
 
 vim.cmd

@@ -35,6 +35,7 @@ vim.g.mapleader = ' '
 vim.g['zig_fmt_autosave'] = 0
 
 vim.g.maplocalleader =","
+
 vim.g.coq_settings =
 {
 	auto_start = 'shut-up',
@@ -42,5 +43,14 @@ vim.g.coq_settings =
 	{
 		snippets = { warn = {} }
 	},
-	keymap = {jump_to_mark = "<c-m>"}
+	keymap =
+	{
+	  jump_to_mark = "<c-m>",
+	},
+	limits =
+	{
+		completion_auto_timeout = 0,
+		completion_manual_timeout = 0
+
+	}
 }

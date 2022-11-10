@@ -31,7 +31,6 @@ function M.on_attach(client, bufnr)
 
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 	vim.keymap.set('n', '\\f', function() vim.lsp.buf.format { async = true } end, bufopts)
-
 end
 
 

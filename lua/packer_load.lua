@@ -20,6 +20,9 @@ return require('packer').startup(function(use)
   use 'lewis6991/impatient.nvim'
   use 'rebelot/heirline.nvim'
   use 'ms-jpq/coq_nvim'
+  use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
+
+  use {'ms-jpq/coq.thirdparty', branch = '3p'}
   use 'SirVer/ultisnips'
 
   use 'christoomey/vim-tmux-navigator'
@@ -101,6 +104,12 @@ return require('packer').startup(function(use)
 	  config = plugin.leap_setup
   }
   use 'ziglang/zig.vim'
+  use
+  {
+	  'ShinKage/idris2-nvim',
+	  requires = {'MunifTanjim/nui.nvim'},
+	  ft = {'idr'}
+  }
   if packer_bootstrap then
     require('packer').sync()
   end
