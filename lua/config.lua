@@ -1,5 +1,6 @@
 local set = vim.o
 set.autoindent = true
+set.timeoutlen=500
 set.tabstop=4
 set.shiftwidth=4
 set.mouse = ""
@@ -31,7 +32,6 @@ vim.g['python_highlight_all'] = 1
 
 vim.g.smartindent = 1
 set.conceallevel= 2
-vim.g.mapleader = ' '
 vim.g['zig_fmt_autosave'] = 0
 
 vim.g.maplocalleader =","
@@ -51,6 +51,11 @@ vim.g.coq_settings =
 	{
 		completion_auto_timeout = 0,
 		completion_manual_timeout = 0
-
 	}
 }
+
+--UltiSnip
+vim.g.UltiSnipsExpandTrigger = '<Tab>'
+vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
+vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+vim.g.UltiSnipsSnippetDirectories = {os.getenv('HOME') .. '/.config/nvim/snips'}

@@ -18,9 +18,10 @@ function M.tree_setup()
 	}
 end
 
-function M.ts_setup()
+function M.treesitter_setup()
 	require'nvim-treesitter.configs'.setup
-	{ highlight =
+	{
+	  highlight =
 	  {
 		enable = true,
 		additional_vim_regex_highlighting = false,
@@ -77,33 +78,48 @@ function M.leap_setup()
 	}
 end
 
-function M.lean_setup()
-	require('lean').setup
-	{
-	  abbreviations = { builtin = true },
-	  lsp = {on_attach = require('setup.lsp_keymaps').on_attach},
-	  infoview = {width = 30},
-	  mappings = true,
-	}
 
-end
-function M.scala_setup()
-	local metals_config = require("metals").bare_config()
---	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	metals_config.capabilities = require("coq").lsp_ensure_capabilities()
-	local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-
-	metals_config.on_attach = require('setup.lsp_keymaps').on_attach
-	vim.api.nvim_create_autocmd("FileType", {
-	  -- NOTE: You may or may not want java included here. You will need it if you
-	  -- want basic Java support but it may also conflict if you are using
-	  -- something like nvim-jdtls which also works on a java filetype autocmd.
-	  pattern = { "scala", "sbt", "java" },
-	  callback = function()
-		require("metals").initialize_or_attach(metals_config)
-	  end,
-	  group = nvim_metals_group,
+function M.which_key_setup()
+	require('which-key').setup({
+		plugins = {
+			marks = true,
+			registers = true,
+		},
+    presets = {
+			operators = false, -- adds help for operators like d, y,
+	  					 -- ... and registers them for motion / text object completion
+			motions = false, -- adds help for motions
+			text_objects = false, -- help for text objects triggered after entering an operator
+			windows = true, -- default bindings on <c-w>
+			nav = true, -- misc bindings to work with windows
+			z = true, -- bindings for folds, spelling and others prefixed with z
+			g = true, -- bindings for prefixed with g
+    },
+		popup_mappings = {
+			scroll_down = '<c-f>', -- binding to scroll down inside the popup
+			scroll_up = '<c-b>', -- binding to scroll up inside the popup
+		},
+		triggers = "auto",
+		key_labels = {
+			["<space>"] = "SPC",
+			["<cr>"] = "RET",
+			["<tab>"] = "TAB",
+		},
 	})
+
 end
+
+function M.telescope_setup()
+	local present, telescope = pcall(require, "telescope")
+
+	vim.cmd[[
+		highlight TelescopePromptBorder guifg=#eeeeee      guibg=none     gui=none
+		highlight TelescopeResultsBorder guifg=#eeeeee      guibg=none     gui=italic
+		highlight TelescopePreviewBorder guifg=#eeeeee      guibg=none     gui=none
+	]]
+	local options = require("setup.utils.tscope").telescope_options()
+	telescope.setup(options)
+end
+
 
 return M

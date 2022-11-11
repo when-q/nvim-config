@@ -1,4 +1,4 @@
-local lsp_keymap = require('setup.lsp_keymaps')
+local lsp_keymap = require('keymap.lsp_keymaps')
 
 local coq = require "coq" -- add this
 require('lspconfig')['pyright'].setup

@@ -13,8 +13,11 @@ local packer_bootstrap = ensure_packer()
 
 
 return require('packer').startup(function(use)
+
   local plugin = require("setup.plugin")
-  use 'wbthomason/packer.nvim'
+  local lang   = require("setup.lang")
+
+  use {'wbthomason/packer.nvim', run = ":PackerSync"}
   use 'rebelot/kanagawa.nvim'
   use 'catppuccin/nvim'
   use 'lewis6991/impatient.nvim'
@@ -30,6 +33,7 @@ return require('packer').startup(function(use)
   {
 	  'nvim-telescope/telescope.nvim',
 	  requires = {'nvim-lua/plenary.nvim'},
+	  config = plugin.telescope_setup()
   }
   use
   {
@@ -58,7 +62,7 @@ return require('packer').startup(function(use)
   use
   {
 	  'nvim-treesitter/nvim-treesitter',
-		config = plugin.ts_setup
+		config = plugin.treesitter_setup
   }
   use
   {
@@ -70,12 +74,8 @@ return require('packer').startup(function(use)
   use
   {
     'Julian/lean.nvim',
-    requires =
-    {
-      'nvim-lua/plenary.nvim',
-      'tomtom/tcomment_vim'
-    },
-	config = plugin.lean_setup,
+    requires = {'nvim-lua/plenary.nvim',},
+	config = lang.lean_setup,
 	ft = {'lean'}
   }
   use
@@ -89,13 +89,13 @@ return require('packer').startup(function(use)
   {
 	'jakewvincent/texmagic.nvim',
   	ft = {'tex'},
-	config = plugin.tex_setup
+	config = lang.tex_setup
   }
   use
   {
 	'scalameta/nvim-metals',
   	requires = {"nvim-lua/plenary.nvim"},
-	config = plugin.scala_setup
+	config = lang.scala_setup
 
   }
   use
@@ -109,6 +109,11 @@ return require('packer').startup(function(use)
 	  'ShinKage/idris2-nvim',
 	  requires = {'MunifTanjim/nui.nvim'},
 	  ft = {'idr'}
+  }
+  use
+  {
+	  'folke/which-key.nvim',
+	  config = plugin.which_key_setup,
   }
   if packer_bootstrap then
     require('packer').sync()
