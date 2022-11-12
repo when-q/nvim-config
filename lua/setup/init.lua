@@ -1,6 +1,6 @@
 local setup =
 {
-	plugin = require("setup.plugin"),
-	lang   = require("setup.lang")
+  plugin = require("setup.plugin"),
+  lang   = require("setup.lang")
 }
 return setup

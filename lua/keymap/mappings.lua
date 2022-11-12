@@ -26,3 +26,4 @@ vim.keymap.set('n', ',v', '<c-v>')
 
 -- Telescope mapping
 which_key.telescope_which_key()
+which_key.trouble_which_key()

@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
   local plugin = require("setup.plugin")
   local lang   = require("setup.lang")
 
-  use {'wbthomason/packer.nvim'}
+  use 'wbthomason/packer.nvim'
   use 'rebelot/kanagawa.nvim'
   use 'catppuccin/nvim'
   use 'lewis6991/impatient.nvim'
@@ -124,6 +124,19 @@ return require('packer').startup(function(use)
   {
 	  'folke/which-key.nvim',
 	  config = plugin.which_key_setup,
+  }
+  use
+  {
+    'folke/trouble.nvim',
+    requires = {"kyazdani42/nvim-web-devicons", opt=true},
+    config = plugin.trouble_setup,
+    keys = {"<leader>t"}
+  }
+  use
+  {
+    'folke/todo-comments.nvim',
+    requires = {'nvim-lua/plenary.nvim'},
+    config = plugin.todo_setup,
   }
   if packer_bootstrap then
     require('packer').sync()
