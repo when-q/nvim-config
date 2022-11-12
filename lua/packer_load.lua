@@ -11,21 +11,25 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-
 return require('packer').startup(function(use)
 
   local plugin = require("setup.plugin")
   local lang   = require("setup.lang")
 
-  use {'wbthomason/packer.nvim', run = ":PackerSync"}
+  use {'wbthomason/packer.nvim'}
   use 'rebelot/kanagawa.nvim'
   use 'catppuccin/nvim'
   use 'lewis6991/impatient.nvim'
   use 'rebelot/heirline.nvim'
-  use 'ms-jpq/coq_nvim'
-  use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
-
-  use {'ms-jpq/coq.thirdparty', branch = '3p'}
+  use
+  {
+    'ms-jpq/coq_nvim',
+    requires =
+    {
+      {'ms-jpq/coq.artifacts', branch = 'artifacts', opt=true},
+      {'ms-jpq/coq.thirdparty', branch = '3p', opt=true}
+    }
+  }
   use 'SirVer/ultisnips'
 
   use 'christoomey/vim-tmux-navigator'
@@ -46,7 +50,7 @@ return require('packer').startup(function(use)
 	requires =
 	{
 	  'nvim-lua/plenary.nvim',
-	  'sindrets/diffview.nvim'
+	  {'sindrets/diffview.nvim', opt=true},
 	},
 	config = plugin.neogit_setup,
 	cmd = "Neogit",
@@ -81,6 +85,7 @@ return require('packer').startup(function(use)
   use
   {
 	  'ellisonleao/glow.nvim',
+      ft = {'md'},
 	  config = plugin.glow_setup
   }
 
@@ -95,7 +100,8 @@ return require('packer').startup(function(use)
   {
 	'scalameta/nvim-metals',
   	requires = {"nvim-lua/plenary.nvim"},
-	config = lang.scala_setup
+	config = lang.scala_setup,
+    ft = { "scala", "sbt"}
 
   }
   use
@@ -103,11 +109,15 @@ return require('packer').startup(function(use)
 	  'ggandor/leap.nvim',
 	  config = plugin.leap_setup
   }
-  use 'ziglang/zig.vim'
+  use
+  {
+    'ziglang/zig.vim',
+    ft = {'zig'}
+  }
   use
   {
 	  'ShinKage/idris2-nvim',
-	  requires = {'MunifTanjim/nui.nvim'},
+	  requires = {'MunifTanjim/nui.nvim', opt=true},
 	  ft = {'idr'}
   }
   use

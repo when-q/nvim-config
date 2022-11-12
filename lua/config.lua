@@ -12,6 +12,7 @@ set.incsearch = true
 set.clipboard='unnamedplus'
 set.splitkeep='screen'
 set.signcolumn = "yes"
+set.lazyredraw = true
 
 vim.cmd
 [[

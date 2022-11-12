@@ -16,6 +16,8 @@ function M.scala_setup()
 	local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 
 	metals_config.on_attach = require('keymap.lsp_keymaps').on_attach
+	  -- NOTE: You may or may not want java included here. You will need it if you
+      --
 	vim.api.nvim_create_autocmd("FileType", {
 	  -- NOTE: You may or may not want java included here. You will need it if you
 	  -- want basic Java support but it may also conflict if you are using
