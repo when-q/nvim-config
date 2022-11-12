@@ -1,6 +1,17 @@
 global !p
 def math():
-	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+	inmathzone = """
+	let s:mathzones  = '\%(texMathZone\%([A-L]S\?\|[V-Z]\)\|texMathRegion\%(\|Ensured\|Env\|EnvStarred\|X\|XX\)\)'
+    let s:textzones = 'texMathText\%(\|Arg\)'
+    function! InMathZone()
+        let ids   = reverse(map(synstack(line('.'), max([col('.') - 1, 1])), 'synIDattr(v:val, ''name'')'))
+        let first = match(ids, '^' . s:mathzones . '\|' . s:textzones . '$')
+        return (first >= 0 && match(ids[first], '^' . s:textzones . '$') == -1)
+    endfunction
+	"""
+	vim.command(inmathzone)
+	print
+	return vim.eval('InMathZone()') == '1'
 endglobal
 
 priority 2
