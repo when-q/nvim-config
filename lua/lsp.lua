@@ -1,20 +1,29 @@
 local lsp_keymap = require('keymap.lsp_keymaps')
 local lsp = require('lspconfig')
 local coq = require "coq" -- add this
+
+local handlers = {
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+}
+
 lsp['pyright'].setup
 {
   on_attach = lsp_keymap.on_attach,
-  capabilities = coq.lsp_ensure_capabilities()
+  capabilities = coq.lsp_ensure_capabilities(),
+  handler = handlers
 }
 lsp['clangd'].setup
 {
   on_attach = lsp_keymap.on_attach,
-  capabilities = coq.lsp_ensure_capabilities()
+  capabilities = coq.lsp_ensure_capabilities(),
+  handler = handlers
 }
 lsp['texlab'].setup
 {
   on_attach = lsp_keymap.on_attach,
-  capabilities = coq.lsp_ensure_capabilities()
+  capabilities = coq.lsp_ensure_capabilities(),
+  handler = handlers
 }
 
 lsp['sumneko_lua'].setup {
@@ -39,7 +48,8 @@ lsp['sumneko_lua'].setup {
     },
   },
   on_attach = lsp_keymap.on_attach,
-  capatibilites = coq.lsp_ensure_capabilities()
+  capatibilites = coq.lsp_ensure_capabilities(),
+  handler = handlers
 }
 --require'lspconfig'.sumneko_lua.setup()
 --require'lspconfig'.metals.setup(coq.lsp_ensure_capabilities())
@@ -64,10 +74,6 @@ local border = {
   { "▏", "FloatBorder" },
 }
 
-local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-}
 
 -- To instead override globally
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview

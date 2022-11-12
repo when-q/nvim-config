@@ -41,9 +41,9 @@ function M.lsp_which_key(bufopts, opts)
       i = { vim.lsp.buf.implementation, "Show Implementations", bufopts },
       K = { vim.diagnostic.open_float, "Diagnostic of Current Line", bufopts },
       r = { vim.lsp.buf.references, "Show References", bufopts },
-      R = { "<cmd>TroubleToggle lsp_references<cr>", "Toggle REferences", bufopts }
+      R = { "<cmd>TroubleToggle lsp_references<cr>", "Toggle References", bufopts }
     },
-  }
+ }
 
   wk.register(lsp_keys, wk_opts)
 end
@@ -51,7 +51,7 @@ end
 function M.trouble_which_key()
   local trouble_keys = {
     ['<leader>t'] = {
-      name = "+ Trouble Actions",
+      name = "+Trouble Actions",
       x = { '<cmd>TroubleToggle<cr>', "Trouble Toggle", },
       w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Trouble Workspace", },
       d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Trouble Document", },
