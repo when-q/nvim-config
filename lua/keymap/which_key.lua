@@ -17,7 +17,7 @@ function M.telescope_which_key()
       b = { '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', "Find Buffer", { noremap = true } },
       h = { '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', "Find Help", { noremap = true } },
       o = { '<cmd>lua require(\'telescope.builtin\').oldfiles()<cr>', "Search Old File", { noremap = true } },
-      t = { '<cmd>TodoTelescope', "Todo in Telescope", { noremap = true } }
+      t = { '<cmd>TodoTelescope<cr>', "Todo in Telescope", { noremap = true } }
     },
   }
   wk.register(telescope_which_key, wk_opts)
