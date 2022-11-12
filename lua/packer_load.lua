@@ -15,19 +15,29 @@ return require('packer').startup(function(use)
 
 	-- sourcing configurations with plugin
   local plugin = require("setup.plugin")
+  local lang = require("setup.lang")
 
   use 'wbthomason/packer.nvim'
   use 'rebelot/kanagawa.nvim'
   use 'rebelot/heirline.nvim'
   use 'lewis6991/impatient.nvim'
-  use 'ms-jpq/coq_nvim'
+  use
+  {
+    'ms-jpq/coq_nvim',
+    requires =
+    {
+      {'ms-jpq/coq.artifacts', branch = 'artifacts', opt=true},
+      {'ms-jpq/coq.thirdparty', branch = '3p', opt=true}
+    }
+  }
   use 'neovim/nvim-lspconfig'
   
   use 'christoomey/vim-tmux-navigator'
   use 
   {
 	  'nvim-telescope/telescope.nvim',
-	  requires = {'nvim-lua/plenary.nvim'}
+	  requires = {'nvim-lua/plenary.nvim'},
+	  config = plugin.telescope_setup
   }
 
   use
@@ -36,7 +46,7 @@ return require('packer').startup(function(use)
 		requires =
 		{
 			'nvim-lua/plenary.nvim',
-			'sindrets/diffview.nvim'
+			{'sindrets/diffview.nvim', opt=true}
 		},
 		config = plugin.neogit_setup,
 		cmd = "Neogit",
@@ -51,27 +61,30 @@ return require('packer').startup(function(use)
   use 
   {
 	'nvim-treesitter/nvim-treesitter',
-	config = plugin.ts_setup,
-	run = ":TSUpdate"
-
+	config = plugin.treesitter_setup,
   }
   use 
   {
     'nvim-tree/nvim-tree.lua',
-    requires = {'nvim-tree/nvim-web-devicons'},
+    requires = {'nvim-tree/nvim-web-devicons', opt=true},
 	config = plugin.tree_setup
   }
   use 
   {
 	  'ellisonleao/glow.nvim',
-	  config = plugin.glow_setup
+	  config = plugin.glow_setup,
+      ft = {'md'}
   }
   use 
   {
 	  'ggandor/leap.nvim',
 	  config = plugin.leap_setup
   }
-
+  use
+  {
+	  'folke/which-key.nvim',
+	  config = plugin.which_key_setup,
+  }
   if packer_bootstrap then
     require('packer').sync()
   end
