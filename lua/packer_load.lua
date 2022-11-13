@@ -19,6 +19,8 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'rebelot/kanagawa.nvim'
   use 'catppuccin/nvim'
+  use 'ellisonleao/gruvbox.nvim'
+  use 'pappasam/papercolor-theme-slim'
   use 'lewis6991/impatient.nvim'
   use 'rebelot/heirline.nvim'
   use
@@ -28,7 +30,7 @@ return require('packer').startup(function(use)
     {
       {'ms-jpq/coq.artifacts', branch = 'artifacts', opt=true},
       {'ms-jpq/coq.thirdparty', branch = '3p', opt=true}
-    }
+    },
   }
   use 'SirVer/ultisnips'
 
@@ -101,7 +103,6 @@ return require('packer').startup(function(use)
 	'scalameta/nvim-metals',
   	requires = {"nvim-lua/plenary.nvim"},
 	config = lang.scala_setup,
-    ft = { "scala", "sbt", "java"}
 
   }
   use

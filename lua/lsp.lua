@@ -1,56 +1,7 @@
 local lsp_keymap = require('keymap.lsp_keymaps')
 local lsp = require('lspconfig')
-local coq = require "coq" -- add this
+local coq = require("coq") -- add this
 
-local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-}
-
-lsp['pyright'].setup
-{
-  on_attach = lsp_keymap.on_attach,
-  capabilities = coq.lsp_ensure_capabilities(),
-  handler = handlers
-}
-lsp['clangd'].setup
-{
-  on_attach = lsp_keymap.on_attach,
-  capabilities = coq.lsp_ensure_capabilities(),
-  handler = handlers
-}
-lsp['texlab'].setup
-{
-  on_attach = lsp_keymap.on_attach,
-  capabilities = coq.lsp_ensure_capabilities(),
-  handler = handlers
-}
-
-lsp['sumneko_lua'].setup {
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-  on_attach = lsp_keymap.on_attach,
-  capatibilites = coq.lsp_ensure_capabilities(),
-  handler = handlers
-}
 --require'lspconfig'.sumneko_lua.setup()
 --require'lspconfig'.metals.setup(coq.lsp_ensure_capabilities())
 --require'lspconfig'.leanls.setup{}
@@ -143,3 +94,59 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+
+local M = {}
+
+M.handlers = {
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+  ["textDocument/definition"] = goto_definition('split')
+}
+
+lsp['pyright'].setup
+{
+  on_attach = lsp_keymap.on_attach,
+  capabilities = coq.lsp_ensure_capabilities(),
+  handler = M.handlers
+}
+lsp['clangd'].setup
+{
+  on_attach = lsp_keymap.on_attach,
+  capabilities = coq.lsp_ensure_capabilities(),
+  handler = M.handlers
+}
+lsp['texlab'].setup
+{
+  on_attach = lsp_keymap.on_attach,
+  capabilities = coq.lsp_ensure_capabilities(),
+  handler = M.handlers
+}
+
+lsp['sumneko_lua'].setup {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { 'vim' },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+  on_attach = lsp_keymap.on_attach,
+  capatibilites = coq.lsp_ensure_capabilities(),
+  handler = M.handlers
+}
+
+return M

@@ -36,25 +36,12 @@ set.conceallevel = 2
 vim.g['zig_fmt_autosave'] = 0
 
 vim.g.maplocalleader = ","
-
 vim.g.coq_settings =
 {
-  auto_start = 'shut-up',
-  clients =
-  {
-    snippets = { warn = {} }
-  },
-  keymap =
-  {
-    jump_to_mark = "<c-m>",
-  },
-  limits =
-  {
-    completion_auto_timeout = 0,
-    completion_manual_timeout = 0
-  }
+  auto_start = true,
+  keymap = {jump_to_mark = "<c-m>",},
 }
-
+vim.api.nvim_command [[COQnow]]
 --UltiSnip
 vim.g.UltiSnipsExpandTrigger = '<Tab>'
 vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'

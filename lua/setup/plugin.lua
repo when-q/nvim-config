@@ -99,7 +99,7 @@ function M.which_key_setup()
       scroll_down = '<c-f>', -- binding to scroll down inside the popup
       scroll_up = '<c-b>', -- binding to scroll up inside the popup
     },
-    triggers = "auto",
+    triggers = {"<space>", "g", "\\", "z",","},
     key_labels = {
       ["<space>"] = "SPC",
       ["<cr>"] = "RET",

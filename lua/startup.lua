@@ -79,7 +79,8 @@ endfun
 
 " Run after "doing all the startup stuff"
 
-autocmd VimEnter * call Start()
+autocmd VimEnter * call Start() 
 autocmd BufEnter * call s:disable_statusline('buffer name')
+
 
 ]]
