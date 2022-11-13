@@ -30,7 +30,10 @@ function M.treesitter_setup()
 end
 
 function M.pair_setup()
-  require('nvim-autopairs').setup()
+  require('nvim-autopairs').setup({
+    map_cr = false,
+    check_ts = true,
+  })
 end
 
 function M.neogit_setup()

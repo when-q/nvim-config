@@ -38,10 +38,12 @@ vim.g['zig_fmt_autosave'] = 0
 vim.g.maplocalleader = ","
 vim.g.coq_settings =
 {
-  auto_start = true,
-  keymap = {jump_to_mark = "<c-m>",},
+  auto_start = 'shut-up',
+  keymap = {
+    recommended  = true,
+    jump_to_mark = "<c-m>",
+  },
 }
-vim.api.nvim_command [[COQnow]]
 --UltiSnip
 vim.g.UltiSnipsExpandTrigger = '<Tab>'
 vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'

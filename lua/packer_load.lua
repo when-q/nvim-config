@@ -1,8 +1,8 @@
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -28,8 +28,8 @@ return require('packer').startup(function(use)
     'ms-jpq/coq_nvim',
     requires =
     {
-      {'ms-jpq/coq.artifacts', branch = 'artifacts', opt=true},
-      {'ms-jpq/coq.thirdparty', branch = '3p', opt=true}
+      { 'ms-jpq/coq.artifacts', branch = 'artifacts', opt = true },
+      { 'ms-jpq/coq.thirdparty', branch = '3p', opt = true }
     },
   }
   use 'SirVer/ultisnips'
@@ -37,106 +37,106 @@ return require('packer').startup(function(use)
   use 'christoomey/vim-tmux-navigator'
   use
   {
-	  'nvim-telescope/telescope.nvim',
-	  requires = {'nvim-lua/plenary.nvim'},
-	  config = plugin.telescope_setup()
+    'nvim-telescope/telescope.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = plugin.telescope_setup()
   }
   use
   {
-	'vim-autoformat/vim-autoformat',
-	ft = 'py'
+    'vim-autoformat/vim-autoformat',
+    ft = 'py'
   }
   use
   {
-	'TimUntersberger/neogit',
-	requires =
-	{
-	  'nvim-lua/plenary.nvim',
-	  {'sindrets/diffview.nvim', opt=true},
-	},
-	config = plugin.neogit_setup,
-	cmd = "Neogit",
+    'TimUntersberger/neogit',
+    requires =
+    {
+      'nvim-lua/plenary.nvim',
+      { 'sindrets/diffview.nvim', opt = true },
+    },
+    config = plugin.neogit_setup,
+    cmd = "Neogit",
   }
 
   use 'neovim/nvim-lspconfig'
   use
   {
-	  'windwp/nvim-autopairs',
-	  event = 'InsertEnter',
-	  config = plugin.pair_setup,
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = plugin.pair_setup,
   }
   use
   {
-	  'nvim-treesitter/nvim-treesitter',
-		config = plugin.treesitter_setup
+    'nvim-treesitter/nvim-treesitter',
+    config = plugin.treesitter_setup
   }
   use
   {
     'nvim-tree/nvim-tree.lua',
-    requires = {'nvim-tree/nvim-web-devicons'},
-	config = plugin.tree_setup,
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = plugin.tree_setup,
   }
 
   use
   {
     'Julian/lean.nvim',
-    requires = {'nvim-lua/plenary.nvim',},
-	config = lang.lean_setup,
-	ft = {'lean'}
+    requires = { 'nvim-lua/plenary.nvim', },
+    config = lang.lean_setup,
+    ft = { 'lean' }
   }
   use
   {
-	  'ellisonleao/glow.nvim',
-      ft = {'md'},
-	  config = plugin.glow_setup
+    'ellisonleao/glow.nvim',
+    ft = { 'md' },
+    config = plugin.glow_setup
   }
 
-  use {'KeitaNakamura/tex-conceal.vim', ft={'tex'}}
+  use { 'KeitaNakamura/tex-conceal.vim', ft = { 'tex' } }
   use
   {
-	'jakewvincent/texmagic.nvim',
-  	ft = {'tex'},
-	config = lang.tex_setup
+    'jakewvincent/texmagic.nvim',
+    ft = { 'tex' },
+    config = lang.tex_setup
   }
   use
   {
-	'scalameta/nvim-metals',
-  	requires = {"nvim-lua/plenary.nvim"},
-	config = lang.scala_setup,
+    'scalameta/nvim-metals',
+    requires = { "nvim-lua/plenary.nvim" },
+    config = lang.scala_setup,
 
   }
   use
   {
-	  'ggandor/leap.nvim',
-	  config = plugin.leap_setup
+    'ggandor/leap.nvim',
+    config = plugin.leap_setup
   }
   use
   {
     'ziglang/zig.vim',
-    ft = {'zig'}
+    ft = { 'zig' }
   }
   use
   {
-	  'ShinKage/idris2-nvim',
-	  requires = {'MunifTanjim/nui.nvim', opt=true},
-	  ft = {'idr'}
+    'ShinKage/idris2-nvim',
+    requires = { 'MunifTanjim/nui.nvim', opt = true },
+    ft = { 'idr' }
   }
   use
   {
-	  'folke/which-key.nvim',
-	  config = plugin.which_key_setup,
+    'folke/which-key.nvim',
+    config = plugin.which_key_setup,
   }
   use
   {
     'folke/trouble.nvim',
-    requires = {"kyazdani42/nvim-web-devicons", opt=true},
+    requires = { "kyazdani42/nvim-web-devicons", opt = true },
     config = plugin.trouble_setup,
-    keys = {"<leader>t"}
+    keys = { "<leader>t" }
   }
   use
   {
     'folke/todo-comments.nvim',
-    requires = {'nvim-lua/plenary.nvim'},
+    requires = { 'nvim-lua/plenary.nvim' },
     config = plugin.todo_setup,
   }
   if packer_bootstrap then

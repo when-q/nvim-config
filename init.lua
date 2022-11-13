@@ -1,7 +1,7 @@
 require("packer_load")
 require("impatient")
 require("theme")
-require("lsp")
 require("config")
+require("lsp")
 require("keymap.mappings")
 require("startup")
