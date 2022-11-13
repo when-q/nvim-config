@@ -12,10 +12,10 @@ end
 function M.scala_setup()
 	local metals_config = require("metals").bare_config()
 --	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	metals_config.capabilities = require("coq").lsp_ensure_capabilities()
+	metals_config.capabilities = Coq.lsp_ensure_capabilities()
 
-    metals_config.handlers = require('lsp').handlers
-	metals_config.on_attach = require('keymap.lsp_keymaps').on_attach
+    metals_config.handlers = Handlers
+	metals_config.on_attach = Lsp_keymap.on_attach
 
 	local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 	  -- NOTE: You may or may not want java included here. You will need it if you

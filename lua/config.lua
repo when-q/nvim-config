@@ -14,6 +14,11 @@ set.splitkeep = 'screen'
 set.signcolumn = "yes"
 set.lazyredraw = true
 
+
+Lsp_keymap = require('keymap.lsp_keymaps')
+Lsp = require('lspconfig')
+Coq = require("coq") -- add this
+
 vim.cmd
 [[
 	autocmd FileType vim let b:vcm_tab_complete = 'omni'

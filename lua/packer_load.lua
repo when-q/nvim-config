@@ -17,11 +17,10 @@ return require('packer').startup(function(use)
   local lang   = require("setup.lang")
 
   use 'wbthomason/packer.nvim'
-  use 'rebelot/kanagawa.nvim'
-  use 'catppuccin/nvim'
-  use 'ellisonleao/gruvbox.nvim'
-  use 'pappasam/papercolor-theme-slim'
   use 'lewis6991/impatient.nvim'
+  use 'rebelot/kanagawa.nvim'
+  use {'catppuccin/nvim', opt = true}
+  use {'pappasam/papercolor-theme-slim', opt = true}
   use 'rebelot/heirline.nvim'
   use
   {
@@ -103,7 +102,7 @@ return require('packer').startup(function(use)
     'scalameta/nvim-metals',
     requires = { "nvim-lua/plenary.nvim" },
     config = lang.scala_setup,
-
+    ft = {"scala", "sbt"}
   }
   use
   {
@@ -138,6 +137,7 @@ return require('packer').startup(function(use)
     'folke/todo-comments.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = plugin.todo_setup,
+    keys = {"<leader>f"}
   }
   if packer_bootstrap then
     require('packer').sync()
