@@ -48,9 +48,9 @@ vim.g.coq_settings =
 }
 
 -- UltiSnip
---vim.g.UltiSnipsExpandTrigger = '<cr>'
---vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
---vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+vim.g.UltiSnipsExpandTrigger = ' '
+vim.g.UltiSnipsJumpForwardTrigger = ' '
+vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 vim.g.UltiSnipsSnippetDirectories = { os.getenv('HOME') .. '/.config/nvim/snips' }
 
 -- Global
