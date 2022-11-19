@@ -12,10 +12,6 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
-
-  local plugin = require("setup.plugin")
-  local lang   = require("setup.lang")
-
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
   use 'rebelot/kanagawa.nvim'
@@ -31,7 +27,14 @@ return require('packer').startup(function(use)
       { 'ms-jpq/coq.thirdparty', branch = '3p', opt = true }
     },
   }
-  use 'SirVer/ultisnips'
+  use
+  {
+    'SirVer/ultisnips',
+    event = 'InsertEnter',
+  }
+
+  local plugin = require("setup.plugin")
+  local lang   = require("setup.lang")
 
   use 'christoomey/vim-tmux-navigator'
   use
@@ -80,7 +83,6 @@ return require('packer').startup(function(use)
   {
     'Julian/lean.nvim',
     requires = { 'nvim-lua/plenary.nvim', },
-    config = lang.lean_setup,
     ft = { 'lean' }
   }
   use

@@ -1,13 +1,4 @@
 local M = {}
-function M.lean_setup()
-	require('lean').setup
-	{
-	  abbreviations = { builtin = true },
-	  lsp = {on_attach = require('keymap.lsp_keymaps').on_attach},
-	  infoview = {width = 30},
-	  mappings = true,
-	}
-end
 
 function M.scala_setup()
 	local metals_config = require("metals").bare_config()
@@ -15,6 +6,7 @@ function M.scala_setup()
 	metals_config.capabilities = Coq.lsp_ensure_capabilities()
 
     metals_config.handlers = Handlers
+    
 	metals_config.on_attach = Lsp_keymap.on_attach
 
 	local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })

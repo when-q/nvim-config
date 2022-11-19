@@ -1,4 +1,5 @@
 local set = vim.o
+
 set.autoindent = true
 set.timeoutlen = 500
 set.tabstop = 4
@@ -13,11 +14,6 @@ set.clipboard = 'unnamedplus'
 set.splitkeep = 'screen'
 set.signcolumn = "yes"
 set.lazyredraw = true
-
-
-Lsp_keymap = require('keymap.lsp_keymaps')
-Lsp = require('lspconfig')
-Coq = require("coq") -- add this
 
 vim.cmd
 [[
@@ -44,13 +40,30 @@ vim.g.maplocalleader = ","
 vim.g.coq_settings =
 {
   auto_start = 'shut-up',
-  keymap = {
-    recommended  = true,
+  keymap =
+  {
+    recommended = true,
     jump_to_mark = "<c-m>",
   },
 }
---UltiSnip
-vim.g.UltiSnipsExpandTrigger = '<Tab>'
-vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
-vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+
+-- UltiSnip
+--vim.g.UltiSnipsExpandTrigger = '<cr>'
+--vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
+--vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 vim.g.UltiSnipsSnippetDirectories = { os.getenv('HOME') .. '/.config/nvim/snips' }
+
+-- Global
+Lsp_keymap = require('keymap.lsp_keymaps')
+
+Lsp = require('lspconfig')
+Coq = require("coq")
+
+vim.api.nvim_create_autocmd('TextYankPost',
+{
+  group = vim.api.nvim_create_augroup('yank_highlight', {}),
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank { higroup='IncSearch', timeout=300 }
+  end,
+})
