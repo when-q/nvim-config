@@ -57,9 +57,8 @@ local function goto_definition(split_cmd)
   return handler
 end
 
+
 vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
-
-
 vim.cmd [[
   highlight DiagnosticLineNrError guibg=#51202A guifg=#FF0000 gui=bold
   highlight DiagnosticLineNrWarn guibg=#51412A guifg=#FFA500 gui=bold
@@ -91,5 +90,4 @@ end
 Handlers = {
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-  ["textDocument/definition"] = goto_definition('split')
 }

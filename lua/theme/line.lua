@@ -1,17 +1,44 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
-
+local M = {}
 local Align = { provider = "%=" }
 --Heirline: utils.pick_child_on_condition() is deprecated, please use the fallthrough field instead. To retain the same functionality, replace `init = utils.pick_child_on_condition()` with `fallthrough = false`
 
 local Separator = { provider = " " }
 local Space = { provider = " " }
+function set_fg(old_fg)
+  local fg = ""
+  if (vim.o.background == 'dark') then
+    fg = "#DCD7BA"
+  else
+    fg = old_fg
+  end
+  return fg
+end
 
-local colors = require 'kanagawa.colors'.setup({
+function set_bg(old_bg)
+  local bg = ""
+  if (vim.o.background == 'dark') then
+    bg = "None"
+  else
+    bg = old_bg
+  end
+  return bg
+end
+
+M.colors = require 'kanagawa.colors'.setup({
   terminalColors = 'true',
-  theme = "default"
+  theme = "default",
+  override =
+  {
+    WinSeparator =
+    {
+      fg = set_fg(fg),
+      bg = set_bg(bg),
+    },
+  }
 }) -- wink
-require('heirline').load_colors(colors)
+require('heirline').load_colors(M.colors)
 
 local ViMode =
 {
@@ -187,3 +214,4 @@ local StatusLines =
   fallthrough = false,
 }
 require("heirline").setup(StatusLines)
+return M

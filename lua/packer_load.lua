@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
   use 'rebelot/kanagawa.nvim'
-  use {'catppuccin/nvim', opt = true}
+  use {'catppuccin/nvim'}
   use {'pappasam/papercolor-theme-slim', opt = true}
   use 'rebelot/heirline.nvim'
   use
