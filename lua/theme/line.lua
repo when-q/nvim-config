@@ -6,38 +6,12 @@ local Align = { provider = "%=" }
 
 local Separator = { provider = " " }
 local Space = { provider = " " }
-function set_fg(old_fg)
-  local fg = ""
-  if (vim.o.background == 'dark') then
-    fg = "#DCD7BA"
-  else
-    fg = old_fg
-  end
-  return fg
-end
 
-function set_bg(old_bg)
-  local bg = ""
-  if (vim.o.background == 'dark') then
-    bg = "None"
-  else
-    bg = old_bg
-  end
-  return bg
-end
 
-M.colors = require 'kanagawa.colors'.setup({
+M.colors = require('kanagawa.colors').setup({
   terminalColors = 'true',
-  theme = "default",
-  override =
-  {
-    WinSeparator =
-    {
-      fg = set_fg(fg),
-      bg = set_bg(bg),
-    },
-  }
-}) -- wink
+  theme = "default"
+})
 require('heirline').load_colors(M.colors)
 
 local ViMode =
