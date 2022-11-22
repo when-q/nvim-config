@@ -1,17 +1,17 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
-
+local M = {}
 local Align = { provider = "%=" }
 --Heirline: utils.pick_child_on_condition() is deprecated, please use the fallthrough field instead. To retain the same functionality, replace `init = utils.pick_child_on_condition()` with `fallthrough = false`
 
 local Separator = { provider = " " }
 local Space = { provider = " " }
 
-local colors = require 'kanagawa.colors'.setup({
+M.colors = require 'kanagawa.colors'.setup({
   terminalColors = 'true',
   theme = "default"
 }) -- wink
-require('heirline').load_colors(colors)
+require('heirline').load_colors(M.colors)
 
 local ViMode =
 {
@@ -187,3 +187,4 @@ local StatusLines =
   fallthrough = false,
 }
 require("heirline").setup(StatusLines)
+return M
