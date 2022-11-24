@@ -2,11 +2,3 @@ vim.opt_local.expandtab = true
 vim.opt_local.tabstop = 2
 vim.opt_local.shiftwidth = 2
 vim.opt_local.formatoptions:append({ c = true, r = true, o = true, q = true })
-
-require('lean').setup
-{
-  abbreviations = { builtin = true },
-  lsp = {on_attach = Lsp_keymap.on_attach},
-  infoview = {width = 30},
-  mappings = true,
-}

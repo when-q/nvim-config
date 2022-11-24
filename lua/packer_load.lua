@@ -83,7 +83,8 @@ return require('packer').startup(function(use)
   {
     'Julian/lean.nvim',
     requires = { 'nvim-lua/plenary.nvim', },
-    ft = { 'lean' }
+    ft = { 'lean' },
+    config = lang.lean_setup,
   }
   use
   {

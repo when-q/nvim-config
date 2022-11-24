@@ -1,5 +1,13 @@
 local M = {}
-
+function M.lean_setup()
+  require('lean').setup
+  {
+    abbreviations = { builtin = true },
+    lsp = {on_attach = Lsp_keymap.on_attach},
+    infoview = {width = 30},
+    mappings = true,
+  }
+end
 function M.scala_setup()
 	local metals_config = require("metals").bare_config()
 --	local capabilities = vim.lsp.protocol.make_client_capabilities()
