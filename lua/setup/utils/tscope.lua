@@ -53,9 +53,8 @@ function M.telescope_options()
       qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
       -- Developer configurations: Not meant for general override
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-    }
+    },
   }
-
   return options
 end
 

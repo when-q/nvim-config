@@ -27,3 +27,5 @@ vim.keymap.set('n', ',v', '<c-v>')
 which_key.telescope_which_key()
 -- Trouble mapping
 which_key.trouble_which_key()
+which_key.undo_tscope_which_key()
+

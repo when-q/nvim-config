@@ -1,7 +1,7 @@
 local set = vim.o
 
 set.autoindent = true
-set.timeoutlen = 500
+set.timeoutlen = 200
 set.tabstop = 4
 set.shiftwidth = 4
 set.mouse = ""

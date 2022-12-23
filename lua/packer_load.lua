@@ -14,9 +14,9 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
+  use 'sainnhe/everforest'
+  use 'rhysd/vim-color-spring-night'
   use 'rebelot/kanagawa.nvim'
-  use {'catppuccin/nvim'}
-  use {'pappasam/papercolor-theme-slim', opt = true}
   use 'rebelot/heirline.nvim'
   use
   {
@@ -37,8 +37,7 @@ return require('packer').startup(function(use)
   local lang   = require("setup.lang")
 
   use 'christoomey/vim-tmux-navigator'
-  use
-  {
+  use {
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = plugin.telescope_setup()
@@ -102,13 +101,6 @@ return require('packer').startup(function(use)
   }
   use
   {
-    'scalameta/nvim-metals',
-    requires = { "nvim-lua/plenary.nvim" },
-    config = lang.scala_setup,
-    ft = {"scala", "sbt"}
-  }
-  use
-  {
     'ggandor/leap.nvim',
     config = plugin.leap_setup
   }
@@ -141,6 +133,15 @@ return require('packer').startup(function(use)
     requires = { 'nvim-lua/plenary.nvim' },
     config = plugin.todo_setup,
     keys = {"<leader>f"}
+  }
+  use
+  {
+    'debugloop/telescope-undo.nvim',
+    requires = {'nvim-telescope/telescope.nvim'},
+    keys = {'<leader>u'},
+    config = function()
+		require("telescope").load_extension("undo")
+	end,
   }
   if packer_bootstrap then
     require('packer').sync()

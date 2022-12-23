@@ -62,4 +62,13 @@ function M.trouble_which_key()
   wk.register(trouble_keys, wk_opts)
 end
 
+function M.undo_tscope_which_key()
+  local undo_tscope_key = {
+    ['<leader>u'] = {
+      name = "+Undo Actions",
+      u = {':lua require("telescope").extensions.undo.undo()<cr>', "Undo List"}
+    }
+  }
+  wk.register(undo_tscope_key)
+end
 return M
