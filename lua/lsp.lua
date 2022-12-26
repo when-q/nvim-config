@@ -57,7 +57,6 @@ local function goto_definition(split_cmd)
   return handler
 end
 
-
 vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
 vim.cmd [[
   highlight DiagnosticLineNrError guibg=#51202A guifg=#FF0000 gui=bold

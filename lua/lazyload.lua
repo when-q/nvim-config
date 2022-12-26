@@ -1,5 +1,5 @@
-local plugin = require("setup.plugin")
-local lang   = require("setup.lang")
+local plugin   = require("setup.plugin")
+local lang     = require("setup.lang")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -16,11 +16,11 @@ vim.opt.runtimepath:prepend(lazypath)
 
 
 require('lazy').setup({
-  {'lewis6991/impatient.nvim'},
-  {'sainnhe/everforest'},
-  {'rhysd/vim-color-spring-night'},
-  {'rebelot/kanagawa.nvim', event = "VeryLazy"},
-  {'rebelot/heirline.nvim'},
+  { 'lewis6991/impatient.nvim' },
+  { 'sainnhe/everforest' },
+  { 'rhysd/vim-color-spring-night' },
+  { 'rebelot/kanagawa.nvim', event = "VeryLazy" },
+  { 'rebelot/heirline.nvim' },
   {
     'ms-jpq/coq_nvim',
     dependencies =
@@ -34,8 +34,8 @@ require('lazy').setup({
     event = 'InsertEnter',
   },
 
-  
-  {'christoomey/vim-tmux-navigator'},
+
+  { 'christoomey/vim-tmux-navigator' },
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -56,7 +56,7 @@ require('lazy').setup({
     event = "VeryLazy",
   },
 
-  {'neovim/nvim-lspconfig'},
+  { 'neovim/nvim-lspconfig' },
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
@@ -81,7 +81,7 @@ require('lazy').setup({
   {
     'ellisonleao/glow.nvim',
     config = plugin.glow_setup,
-    cmd = {"Glow"}
+    cmd = { "Glow" }
   },
   { 'KeitaNakamura/tex-conceal.vim', ft = { 'tex' } },
   {
@@ -117,12 +117,12 @@ require('lazy').setup({
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = plugin.todo_setup,
-    keys = {"<leader>f"}
+    keys = { "<leader>f" }
   },
   {
     'debugloop/telescope-undo.nvim',
-    dependencies = {'nvim-telescope/telescope.nvim'},
-    keys = {'<leader>u'},
+    dependencies = { 'nvim-telescope/telescope.nvim' },
+    keys = { '<leader>u' },
     config = function()
       require("telescope").load_extension("undo")
     end,
