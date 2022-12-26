@@ -1,6 +1,6 @@
 # Neovim Configuration
 ## Plugin Manager
-Using `Packer` as the plugin manager (with bootstrapping).
+Using `Lazy` as the plugin manager (with bootstrapping).
 
 ## First Time Setup
 If you want to install the minimal version:
