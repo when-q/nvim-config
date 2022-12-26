@@ -1,4 +1,4 @@
-require("packer_load")
+require("lazyload")
 require("impatient")
 require("theme")
 require("config")
