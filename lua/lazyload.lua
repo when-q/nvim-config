@@ -25,9 +25,18 @@ require('lazy').setup({
     'ms-jpq/coq_nvim',
     dependencies =
     {
-      { 'ms-jpq/coq.artifacts', branch = 'artifacts', opt = true },
-      { 'ms-jpq/coq.thirdparty', branch = '3p', opt = true }
+      {
+        'ms-jpq/coq.artifacts',
+        branch = 'artifacts',
+        lazy = true,
+      },
+      {
+        'ms-jpq/coq.thirdparty',
+        branch = '3p',
+        lazy = true,
+      }
     },
+    event = 'InsertEnter',
   },
   {
     'SirVer/ultisnips',
@@ -39,7 +48,7 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = plugin.telescope_setup()
+    config = plugin.telescope_setup
   },
   {
     'vim-autoformat/vim-autoformat',
@@ -50,7 +59,7 @@ require('lazy').setup({
     dependencies =
     {
       'nvim-lua/plenary.nvim',
-      { 'sindrets/diffview.nvim', opt = true },
+      { 'sindrets/diffview.nvim', lazy = true },
     },
     config = plugin.neogit_setup,
     event = "VeryLazy",
@@ -65,7 +74,7 @@ require('lazy').setup({
   {
     'nvim-treesitter/nvim-treesitter',
     config = plugin.treesitter_setup,
-    lazy = true
+    event = "BufEnter"
   },
   {
     'nvim-tree/nvim-tree.lua',
@@ -99,7 +108,7 @@ require('lazy').setup({
   },
   {
     'ShinKage/idris2-nvim',
-    dependencies = { 'MunifTanjim/nui.nvim', opt = true },
+    dependencies = { 'MunifTanjim/nui.nvim', lazy = true },
     ft = { 'idr' }
   },
   {
@@ -109,15 +118,17 @@ require('lazy').setup({
   },
   {
     'folke/trouble.nvim',
-    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+    dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
     config = plugin.trouble_setup,
-    keys = { "<leader>t" }
+    keys = { "<leader>t" },
+    cmd = { 'TroubleToggle' },
   },
   {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = plugin.todo_setup,
-    keys = { "<leader>f" }
+    keys = { "<leader>f" },
+    cmd = { "TodoTelescope" },
   },
   {
     'debugloop/telescope-undo.nvim',
@@ -127,4 +138,9 @@ require('lazy').setup({
       require("telescope").load_extension("undo")
     end,
   },
+  {
+    'p00f/clangd_extensions.nvim',
+    ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+    config = lang.clangd_setup,
+  }
 })
