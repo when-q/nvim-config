@@ -25,8 +25,8 @@ require('lazy').setup({
     'ms-jpq/coq_nvim',
     dependencies =
     {
-      { 'ms-jpq/coq.artifacts', branch = 'artifacts', opt = true },
-      { 'ms-jpq/coq.thirdparty', branch = '3p', opt = true }
+      { 'ms-jpq/coq.artifacts', branch = 'artifacts', lazy = true },
+      { 'ms-jpq/coq.thirdparty', branch = '3p', lazy = true }
     },
   },
 
@@ -45,7 +45,7 @@ require('lazy').setup({
     dependencies =
     {
       'nvim-lua/plenary.nvim',
-      {'sindrets/diffview.nvim', opt = true }
+      {'sindrets/diffview.nvim', lazy = true }
     },
     config = plugin.neogit_setup,
     cmd = "Neogit",
@@ -64,7 +64,7 @@ require('lazy').setup({
   },
   {
     'nvim-tree/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
     config = plugin.tree_setup,
   },
   {
