@@ -71,4 +71,5 @@ function M.undo_tscope_which_key()
   }
   wk.register(undo_tscope_key)
 end
+
 return M

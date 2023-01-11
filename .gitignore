@@ -1,3 +1,5 @@
 .luarc.json
 .vscode/
 lazy-lock.json
+.DS_Store
+.mind

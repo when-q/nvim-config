@@ -59,8 +59,9 @@ require('lazy').setup({
     dependencies =
     {
       'nvim-lua/plenary.nvim',
-      { 'sindrets/diffview.nvim', lazy = true },
+      { 'sindrets/diffview.nvim' },
     },
+    cmd = "Neogit",
     config = plugin.neogit_setup,
     event = "VeryLazy",
   },
@@ -80,6 +81,7 @@ require('lazy').setup({
     'nvim-tree/nvim-tree.lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = plugin.tree_setup,
+    event = "VeryLazy"
   },
   {
     'Julian/lean.nvim',
@@ -101,10 +103,6 @@ require('lazy').setup({
   {
     'ggandor/leap.nvim',
     config = plugin.leap_setup
-  },
-  {
-    'ziglang/zig.vim',
-    ft = { 'zig' }
   },
   {
     'ShinKage/idris2-nvim',
@@ -142,5 +140,12 @@ require('lazy').setup({
     'p00f/clangd_extensions.nvim',
     ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
     config = lang.clangd_setup,
+  },
+  {
+    'phaazon/mind.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require 'mind'.setup()
+    end
   }
 })
