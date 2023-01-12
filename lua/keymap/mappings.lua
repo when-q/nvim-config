@@ -21,40 +21,6 @@ vim.keymap.set({'n', 'x', 'o'}, 'gX','<Plug>(leap-backward-till)', {noremap=true
 vim.keymap.set({'n', 'x','o'},'gc', '<Plug>(leap-cross-window)', {noremap=true})
 
 -- mind.nvim mapping
-local normal = {
-      ["<cr>"] = "open_data",
-      ["<s-cr>"] = "open_data_index",
-      ["<tab>"] = "toggle_node",
-      ["<s-tab>"] = "toggle_node",
-      ["/"] = "select_path",
-      ["$"] = "change_icon_menu",
-      c = "add_inside_end_index",
-      I = "add_inside_start",
-      i = "add_inside_end",
-      l = "copy_node_link",
-      L = "copy_node_link_index",
-      d = "delete",
-      D = "delete_file",
-      O = "add_above",
-      o = "add_below",
-      q = "quit",
-      r = "rename",
-      R = "change_icon",
-      u = "make_url",
-      x = "select",
-    }
-
-local selection = {
-      ["<cr>"] = "open_data",
-      ["<s-tab>"] = "toggle_node",
-      ["/"] = "select_path",
-      I = "move_inside_start",
-      i = "move_inside_end",
-      O = "move_above",
-      o = "move_below",
-      q = "quit",
-      x = "select",
-    }
 -- misc
 vim.keymap.set('n', ',v', '<c-v>')
 -- Which-key mapping
@@ -65,4 +31,4 @@ which_key.telescope_which_key()
 -- Trouble mapping
 which_key.trouble_which_key()
 which_key.undo_tscope_which_key()
-
+which_key.glance_which_key()

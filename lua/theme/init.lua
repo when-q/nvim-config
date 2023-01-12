@@ -11,7 +11,9 @@ local function set_fg()
   end
   return fg
 end
-
+vim.api.nvim_set_hl(0, 'GlanceWinBarFilepath', {bg = default_colors.sumiInk4})
+vim.api.nvim_set_hl(0, 'GlanceWinBarFilename', {bg = default_colors.sumiInk4})
+vim.api.nvim_set_hl(0, 'GlanceWinBarTitle', {bg = default_colors.sumiInk4})
 local overrides =
 {
   WinSeparator =

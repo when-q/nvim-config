@@ -147,5 +147,17 @@ require('lazy').setup({
     config = function()
       require 'mind'.setup()
     end
+  },
+  {
+    'dnlhc/glance.nvim',
+    config = function()
+      require('glance').setup({
+        -- your configuration
+        theme = {
+          enable = true, -- Will generate colors for the plugin based on your current colorscheme
+          mode = 'brighten', -- 'brighten'|'darken'|'auto', 'auto' will set mode based on the brightness of your colorscheme
+        },
+      })
+    end,
   }
 })

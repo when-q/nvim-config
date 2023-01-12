@@ -72,4 +72,17 @@ function M.undo_tscope_which_key()
   wk.register(undo_tscope_key)
 end
 
+function M.glance_which_key()
+  local glance_key = {
+    ['<leader>g'] = {
+      name ="+Glance Actions",
+    d = {'<CMD>Glance definitions<CR>', "Glance definitions"},
+    r = {'<CMD>Glance references<CR>', "Glance references"},
+    y = {'<CMD>Glance type_definitions<CR>', "Glance typedef"},
+    m = {'<CMD>Glance implementations<CR>', "Glance implementations"},
+    }
+  }
+  wk.register(glance_key)
+end
+
 return M
