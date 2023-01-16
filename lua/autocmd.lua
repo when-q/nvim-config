@@ -7,3 +7,20 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     end
   end,
 })
+
+vim.cmd [[
+augroup spring_override
+	autocmd!
+	  autocmd Colorscheme spring-night hi LineNr ctermfg=231 ctermbg=231 guifg=#8d9eb2 guibg=#132132
+	  autocmd Colorscheme spring-night hi SignColumn ctermfg=None ctermbg=None guifg=None guibg=None
+augroup END
+]]
+
+vim.api.nvim_create_autocmd('TextYankPost',
+{
+  group = vim.api.nvim_create_augroup('yank_highlight', {}),
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 300 }
+  end,
+})

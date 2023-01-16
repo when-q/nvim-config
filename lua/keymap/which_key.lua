@@ -76,10 +76,10 @@ function M.glance_which_key()
   local glance_key = {
     ['<leader>g'] = {
       name ="+Glance Actions",
-    d = {'<CMD>Glance definitions<CR>', "Glance definitions"},
-    r = {'<CMD>Glance references<CR>', "Glance references"},
-    y = {'<CMD>Glance type_definitions<CR>', "Glance typedef"},
-    m = {'<CMD>Glance implementations<CR>', "Glance implementations"},
+    d = {'<cmd>Glance definitions<CR>', "Glance definitions"},
+    r = {'<cmd>Glance references<CR>', "Glance references"},
+    y = {'<cmd>Glance type_definitions<CR>', "Glance typedef"},
+    m = {'<cmd>Glance implementations<CR>', "Glance implementations"},
     }
   }
   wk.register(glance_key)
