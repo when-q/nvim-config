@@ -24,8 +24,6 @@ local overrides =
 }
 
 require 'kanagawa'.setup({ overrides = overrides })
---vim.api.nvim_command [[colorscheme kanagawa]]
-vim.api.nvim_command [[colorscheme spring-night]]
+vim.api.nvim_command [[colorscheme kanagawa]]
 vim.g['spring_night_high_contrast'] = 1
---vim.api.nvim_command [[colorscheme spring-night]]
 vim.g['showtabline'] = 2

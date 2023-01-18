@@ -17,8 +17,6 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require('lazy').setup({
   { 'lewis6991/impatient.nvim' },
-  { 'sainnhe/everforest' },
-  { 'rhysd/vim-color-spring-night' },
   { 'rebelot/kanagawa.nvim', event = "VeryLazy" },
   { 'rebelot/heirline.nvim' },
   {
@@ -85,7 +83,7 @@ require('lazy').setup({
   },
   {
     'Julian/lean.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', },
+    dependencies = { 'nvim-lua/plenary.nvim', 'Julian/tree-sitter-lean'},
     ft = { 'lean' },
     config = lang.lean_setup,
   },
@@ -146,7 +144,8 @@ require('lazy').setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require 'mind'.setup()
-    end
+    end,
+    lazy = true
   },
   {
     'dnlhc/glance.nvim',
