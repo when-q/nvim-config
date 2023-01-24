@@ -24,3 +24,13 @@ vim.api.nvim_create_autocmd('TextYankPost',
     vim.highlight.on_yank { higroup = 'IncSearch', timeout = 300 }
   end,
 })
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"},
+{
+  group = vim.api.nvim_create_augroup('mlir-highlight', {}),
+  pattern = '*.mlir',
+  callback = function()
+    vim.cmd[[
+    set ft=mlir
+    ]]
+  end,
+})

@@ -18,6 +18,19 @@ vim.opt.runtimepath:prepend(lazypath)
 require('lazy').setup({
   { 'lewis6991/impatient.nvim' },
   { 'rebelot/kanagawa.nvim', event = "VeryLazy" },
+  {
+    'AlexvZyl/nordic.nvim',
+    event = "VeryLazy",
+    config = function()
+      require 'nordic'.setup {
+        telescope = {
+          -- Available styles: `classic`, `flat`.
+          style = 'flat'
+        },
+      }
+
+    end
+  },
   { 'rebelot/heirline.nvim' },
   {
     'ms-jpq/coq_nvim',
@@ -83,7 +96,7 @@ require('lazy').setup({
   },
   {
     'Julian/lean.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'Julian/tree-sitter-lean'},
+    dependencies = { 'nvim-lua/plenary.nvim', 'Julian/tree-sitter-lean' },
     ft = { 'lean' },
     config = lang.lean_setup,
   },
@@ -158,5 +171,5 @@ require('lazy').setup({
         },
       })
     end,
-  }
+  },
 })

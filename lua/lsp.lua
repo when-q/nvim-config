@@ -130,3 +130,9 @@ Lsp['sumneko_lua'].setup {
   capatibilites = Coq.lsp_ensure_capabilities(),
   handler = Handlers
 }
+Lsp['mlir_lsp_server'].setup {
+  on_attach = Lsp_keymap.on_attach,
+  capatibilites = Coq.lsp_ensure_capabilities(),
+  handler = Handlers
+
+}
