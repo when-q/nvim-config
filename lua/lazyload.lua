@@ -158,7 +158,6 @@ require('lazy').setup({
     config = function()
       require 'mind'.setup()
     end,
-    lazy = true
   },
   {
     'dnlhc/glance.nvim',
@@ -172,4 +171,11 @@ require('lazy').setup({
       })
     end,
   },
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end,
+    event = "BufEnter",
+  }
 })
