@@ -39,9 +39,9 @@ function M.clangd_setup()
     server = {
       -- options to pass to nvim-lspconfig
       -- i.e. the arguments to require("lspconfig").clangd.setup({})
-        on_attach = Lsp_keymap.on_attach,
-        capabilities = Coq.lsp_ensure_capabilities(),
-        handler = Handlers
+      on_attach = Lsp_keymap.on_attach,
+      capabilities = Coq.lsp_ensure_capabilities(),
+      handler = Handlers
     },
     extensions = {
       -- defaults:

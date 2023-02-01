@@ -43,7 +43,7 @@ function M.lsp_which_key(bufopts, opts)
       r = { vim.lsp.buf.references, "Show References", bufopts },
       R = { "<cmd>TroubleToggle lsp_references<cr>", "Toggle References", bufopts }
     },
- }
+  }
 
   wk.register(lsp_keys, wk_opts)
 end
@@ -66,7 +66,7 @@ function M.undo_tscope_which_key()
   local undo_tscope_key = {
     ['<leader>u'] = {
       name = "+Undo Actions",
-      u = {':lua require("telescope").extensions.undo.undo()<cr>', "Undo List"}
+      u = { ':lua require("telescope").extensions.undo.undo()<cr>', "Undo List" }
     }
   }
   wk.register(undo_tscope_key)
@@ -75,11 +75,11 @@ end
 function M.glance_which_key()
   local glance_key = {
     ['<leader>g'] = {
-      name ="+Glance Actions",
-    d = {'<cmd>Glance definitions<CR>', "Glance definitions"},
-    r = {'<cmd>Glance references<CR>', "Glance references"},
-    y = {'<cmd>Glance type_definitions<CR>', "Glance typedef"},
-    m = {'<cmd>Glance implementations<CR>', "Glance implementations"},
+      name = "+Glance Actions",
+      d = { '<cmd>Glance definitions<CR>', "Glance definitions" },
+      r = { '<cmd>Glance references<CR>', "Glance references" },
+      y = { '<cmd>Glance type_definitions<CR>', "Glance typedef" },
+      m = { '<cmd>Glance implementations<CR>', "Glance implementations" },
     }
   }
   wk.register(glance_key)

@@ -1,5 +1,5 @@
 local utils =
 {
-	tscope = require("setup.utils.tscope"),
+  tscope = require("setup.utils.tscope"),
 }
 return utils

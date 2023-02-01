@@ -1,4 +1,4 @@
-vim.cmd[[
+vim.cmd [[
 " Vim syntax file
 " Language:   mlir
 " Maintainer: The MLIR team, http://github.com/tensorflow/mlir/
