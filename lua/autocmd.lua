@@ -34,3 +34,5 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" },
     ]]
     end,
   })
+vim.cmd([[au FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif]])
+

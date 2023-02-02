@@ -17,7 +17,9 @@ function M.telescope_which_key()
       b = { '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', "Find Buffer", { noremap = true } },
       h = { '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', "Find Help", { noremap = true } },
       o = { '<cmd>lua require(\'telescope.builtin\').oldfiles()<cr>', "Search Old File", { noremap = true } },
-      t = { '<cmd>TodoTelescope<cr>', "Todo in Telescope", { noremap = true } }
+      d = { '<cmd>TodoTelescope<cr>', "Todo in Telescope", { noremap = true } },
+
+
     },
   }
   wk.register(telescope_which_key, wk_opts)
@@ -60,6 +62,18 @@ function M.trouble_which_key()
     }
   }
   wk.register(trouble_keys, wk_opts)
+end
+
+function M.tab_which_key()
+  local tab_keys = {
+    ['<leader>l'] = {
+      name = "+Tab",
+      l = { '<cmd>:Telescope telescope-tabs list_tabs<cr>', "List Tabs", { noremap = true } },
+      p = { '<cmd>:lua require(\'telescope-tabs\').go_to_previous()<cr>', "Previous Tab", { noremap = true } },
+      n = { '<cmd>:tabnext<cr>', "Next Tab", { noremap = true } },
+    }
+  }
+  wk.register(tab_keys)
 end
 
 function M.undo_tscope_which_key()

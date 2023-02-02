@@ -1,5 +1,6 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
+local TabLine = require("theme.tabline").TabLine
 local M = {}
 local Align = { provider = "%=" }
 --Heirline: utils.pick_child_on_condition() is deprecated, please use the fallthrough field instead. To retain the same functionality, replace `init = utils.pick_child_on_condition()` with `fallthrough = false`
@@ -187,5 +188,5 @@ local StatusLines =
   SpecialStatusline, TerminalStatusline, InactiveStatusline, DefaultStatusline,
   fallthrough = false,
 }
-require("heirline").setup(StatusLines)
+require("heirline").setup({statusline = StatusLines, tabline = TabLine})
 return M
