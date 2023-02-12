@@ -4,8 +4,6 @@ local which_key = require("keymap.which_key")
 vim.g.mapleader = ' '
 map('n', '<c-n>', ':NvimTreeToggle<CR>', { noremap = true })
 map('n', '  ', ':noh<CR>', { noremap = true })
-map('o', 'nc', '<cmd>normal! f{vi{<cr>', { noremap = true })
-map('o', 'nr', '<cmd>normal! f(vi(<cr>', { noremap = true })
 -- Tmux Navigator Mapping
 vim.g['tmux_navigator_no_mappings'] = 1
 map('n', "<c-h>", ":TmuxNavigateLeft<cr>", { noremap = true })

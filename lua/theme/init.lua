@@ -1,6 +1,9 @@
 vim.o.termguicolors = true
 vim.o.background = 'dark'
 
+--vim.api.nvim_command [[colorscheme kanagawa]]
+--vim.api.nvim_command [[colorscheme nordic]]
+
 local line = require("theme.line")
 local default_colors = line.colors
 
@@ -12,9 +15,6 @@ local function set_fg()
   return fg
 end
 
-vim.api.nvim_set_hl(0, 'GlanceWinBarFilepath', { bg = default_colors.sumiInk4 })
-vim.api.nvim_set_hl(0, 'GlanceWinBarFilename', { bg = default_colors.sumiInk4 })
-vim.api.nvim_set_hl(0, 'GlanceWinBarTitle', { bg = default_colors.sumiInk4 })
 local overrides =
 {
   WinSeparator =
@@ -24,8 +24,15 @@ local overrides =
   },
 }
 
+vim.api.nvim_set_hl(0, 'GlanceWinBarFilepath', { bg = default_colors.sumiInk4 })
+vim.api.nvim_set_hl(0, 'GlanceWinBarFilename', { bg = default_colors.sumiInk4 })
+vim.api.nvim_set_hl(0, 'GlanceWinBarTitle', { bg = default_colors.sumiInk4 })
+vim.api.nvim_set_hl(0, 'WinSeparator', {fg = default_colors.oldWhite})
+
 require 'kanagawa'.setup({ overrides = overrides })
---vim.api.nvim_command [[colorscheme kanagawa]]
+require 'nordic'.setup({override = overrides})
 vim.api.nvim_command [[colorscheme nordic]]
-vim.g['spring_night_high_contrast'] = 1
+--vim.api.nvim_command [[colorscheme kanagawa]]
+
+--vim.g['spring_night_high_contrast'] = 1
 vim.g['showtabline'] = 2

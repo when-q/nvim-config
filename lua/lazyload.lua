@@ -179,12 +179,13 @@ require('lazy').setup({
     event = "BufEnter",
   },
   {
-    '/LukasPietzschmann/telescope-tabs',
+    'LukasPietzschmann/telescope-tabs',
     dependencies = { 'nvim-telescope/telescope.nvim' },
     config = function()
       require 'telescope-tabs'.setup {
         -- Your custom config :^)
       }
-    end
+    end,
+    lazy = true
   }
 })

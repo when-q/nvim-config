@@ -105,7 +105,7 @@ Lsp['texlab'].setup
   handler = Handlers
 }
 
-Lsp['sumneko_lua'].setup {
+Lsp['lua_ls'].setup {
   settings = {
     Lua = {
       runtime = {
