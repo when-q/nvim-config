@@ -17,7 +17,7 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require('lazy').setup({
   { 'lewis6991/impatient.nvim' },
-  { 'rebelot/kanagawa.nvim', event = "VeryLazy" },
+  { 'rebelot/kanagawa.nvim',   event = "VeryLazy" },
   {
     'AlexvZyl/nordic.nvim',
     event = "VeryLazy",
@@ -28,7 +28,6 @@ require('lazy').setup({
           style = 'flat'
         },
       }
-
     end
   },
   { 'rebelot/heirline.nvim' },
@@ -153,25 +152,6 @@ require('lazy').setup({
     config = lang.clangd_setup,
   },
   {
-    'phaazon/mind.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require 'mind'.setup()
-    end,
-  },
-  {
-    'dnlhc/glance.nvim',
-    config = function()
-      require('glance').setup({
-        -- your configuration
-        theme = {
-          enable = true, -- Will generate colors for the plugin based on your current colorscheme
-          mode = 'brighten', -- 'brighten'|'darken'|'auto', 'auto' will set mode based on the brightness of your colorscheme
-        },
-      })
-    end,
-  },
-  {
     'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup()
@@ -187,5 +167,5 @@ require('lazy').setup({
       }
     end,
     lazy = true
-  }
+  },
 })

@@ -1,9 +1,6 @@
 vim.o.termguicolors = true
 vim.o.background = 'dark'
 
---vim.api.nvim_command [[colorscheme kanagawa]]
---vim.api.nvim_command [[colorscheme nordic]]
-
 local line = require("theme.line")
 local default_colors = line.colors
 
