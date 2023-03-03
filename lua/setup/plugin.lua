@@ -125,5 +125,7 @@ function M.telescope_setup()
   local options = require("setup.utils.tscope").telescope_options()
   telescope.setup(options)
 end
-
+function M.gitsign_setup()
+      require('gitsigns').setup()
+end
 return M

@@ -17,10 +17,8 @@ vim.opt.runtimepath:prepend(lazypath)
 require('lazy').setup({
   -- sourcing configurations with plugin
 
-  {'wbthomason/packer.nvim'},
   {'rebelot/kanagawa.nvim'},
   {'rebelot/heirline.nvim'},
-  {'lewis6991/impatient.nvim'},
   {
     'ms-jpq/coq_nvim',
     dependencies =
@@ -68,16 +66,17 @@ require('lazy').setup({
     config = plugin.tree_setup,
   },
   {
-    'ellisonleao/glow.nvim',
-    config = plugin.glow_setup,
-	lazy = true
-  },
-  {
     'ggandor/leap.nvim',
     config = plugin.leap_setup
   },
   {
     'folke/which-key.nvim',
     config = plugin.which_key_setup,
+  },
+  {'tpope/vim-unimpaired'},
+  {
+    'lewis6991/gitsigns.nvim',
+    config = plugin.gitsign_setup,
+event = "BufEnter",
   },
 })

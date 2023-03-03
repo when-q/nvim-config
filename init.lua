@@ -1,5 +1,4 @@
 require("lazyload")
-require("impatient")
 require("keymap.mappings")
 require("theme")
 require("config")

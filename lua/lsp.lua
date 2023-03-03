@@ -1,6 +1,5 @@
 -- example setup:
 --[[
-In [filetype].lua, put this:
 Lsp['pyright'].setup
 {
 	on_attach = Lsp_keymap.on_attach,
