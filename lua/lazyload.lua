@@ -16,7 +16,6 @@ vim.opt.runtimepath:prepend(lazypath)
 
 
 require('lazy').setup({
-  { 'lewis6991/impatient.nvim' },
   { 'rebelot/kanagawa.nvim',   event = "VeryLazy" },
   {
     'AlexvZyl/nordic.nvim',
@@ -168,4 +167,7 @@ require('lazy').setup({
     end,
     lazy = true
   },
+  {
+    'tpope/vim-unimpaired',
+  }
 })

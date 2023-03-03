@@ -1,5 +1,4 @@
 require("lazyload")
-require("impatient")
 require("theme")
 require("config")
 require("lsp")
