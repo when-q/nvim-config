@@ -8,8 +8,9 @@ local Separator = { provider = " " }
 local Space = { provider = " " }
 
 M.colors = require 'kanagawa.colors'.setup({
+  compile = 'true',
   terminalColors = 'true',
-  theme = "default"
+  theme = "wave"
 }) -- wink
 require('heirline').load_colors(M.colors)
 

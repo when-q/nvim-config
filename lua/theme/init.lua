@@ -1,25 +1,19 @@
 vim.o.termguicolors = true
 
-vim.o.background = 'dark'
-local line = require("theme.line")
-local default_colors = line.colors
-local function set_fg()
-  local fg = default_colors.sumiInk4
-  if (vim.o.background == 'dark') then
-    fg = default_colors.oldWhite
-  end
-  return fg
-end
+vim.o.background = ''
 
-local overrides = 
-{
-  WinSeparator =
+require("theme.line")
+require 'kanagawa'.setup(
   {
-    fg = set_fg(),
-    bg = "NONE"
-  },
-}
+    overrides = function(colors)
+      return {
+        WinSeparator = {
+          fg = colors.palette.oldWhite,
+          bg = "NONE"
+        }
+      }
+    end
+  })
 
-require 'kanagawa'.setup({ overrides = overrides })
-vim.api.nvim_command [[colorscheme kanagawa]]
+vim.api.nvim_command [[colorscheme kanagawa-wave]]
 vim.g['showtabline'] = 2
