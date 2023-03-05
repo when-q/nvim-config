@@ -9,7 +9,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 })
 
 
-
 vim.cmd [[
 augroup spring_override
 	autocmd!
@@ -23,18 +22,15 @@ vim.api.nvim_create_autocmd('TextYankPost',
     group = vim.api.nvim_create_augroup('yank_highlight', {}),
     pattern = '*',
     callback = function()
-      vim.highlight.on_yank { higroup = 'IncSearch', timeout = 300 }
+      vim.highlight.on_yank { higroup = 'IncSearch', timeout = 400 }
     end,
   })
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" },
   {
     group = vim.api.nvim_create_augroup('mlir-highlight', {}),
-    pattern = '*.mlir',
+    pattern = {'*.mlir', '*.xdsl'},
     callback = function()
-      vim.cmd [[
-    set ft=mlir
-    ]]
+      vim.cmd [[set ft=mlir]]
     end,
   })
 vim.cmd([[au FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif]])
-

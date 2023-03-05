@@ -16,7 +16,7 @@ vim.opt.runtimepath:prepend(lazypath)
 
 
 require('lazy').setup({
-  { 'rebelot/kanagawa.nvim',   event = "VeryLazy" },
+  { 'rebelot/kanagawa.nvim', event = "VeryLazy" },
   {
     'AlexvZyl/nordic.nvim',
     event = "VeryLazy",
@@ -47,6 +47,7 @@ require('lazy').setup({
     },
     event = 'InsertEnter',
   },
+  { 'lervag/vimtex' },
   {
     'SirVer/ultisnips',
     event = 'InsertEnter',
@@ -103,7 +104,6 @@ require('lazy').setup({
     config = plugin.glow_setup,
     cmd = { "Glow" }
   },
-  { 'KeitaNakamura/tex-conceal.vim', ft = { 'tex' } },
   {
     'jakewvincent/texmagic.nvim',
     ft = { 'tex' },
@@ -169,5 +169,5 @@ require('lazy').setup({
   },
   {
     'tpope/vim-unimpaired',
-  }
+  },
 })

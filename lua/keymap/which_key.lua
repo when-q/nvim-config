@@ -69,8 +69,6 @@ function M.tab_which_key()
     ['<leader>l'] = {
       name = "+Tab",
       l = { '<cmd>:Telescope telescope-tabs list_tabs<cr>', "List Tabs", { noremap = true } },
-      p = { '<cmd>:lua require(\'telescope-tabs\').go_to_previous()<cr>', "Previous Tab", { noremap = true } },
-      n = { '<cmd>:tabnext<cr>', "Next Tab", { noremap = true } },
     }
   }
   wk.register(tab_keys)
@@ -97,6 +95,18 @@ function M.glance_which_key()
     }
   }
   wk.register(glance_key)
+end
+
+function M.diffview_which_key()
+  local diffview_key = {
+    ['<leader>d'] = {
+      name = "+Diffview Actions",
+      o = { '<cmd>DiffviewOpen<CR>', "Open Diffview" },
+      k = { '<cmd>DiffviewClose<CR>', "Close Diffview" },
+      h = { '<cmd>DiffviewFileHistory<CR>', "Diffview History" },
+    }
+  }
+  wk.register(diffview_key)
 end
 
 return M

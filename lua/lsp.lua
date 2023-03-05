@@ -104,7 +104,6 @@ Lsp['texlab'].setup
   capabilities = Coq.lsp_ensure_capabilities(),
   handler = Handlers
 }
-
 Lsp['lua_ls'].setup {
   settings = {
     Lua = {
@@ -130,8 +129,10 @@ Lsp['lua_ls'].setup {
   capatibilites = Coq.lsp_ensure_capabilities(),
   handler = Handlers
 }
+--[[
 Lsp['mlir_lsp_server'].setup {
   on_attach = Lsp_keymap.on_attach,
   capatibilites = Coq.lsp_ensure_capabilities(),
   handler = Handlers
 }
+--]]

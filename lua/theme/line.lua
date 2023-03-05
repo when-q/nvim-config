@@ -11,7 +11,12 @@ local Space = { provider = " " }
 
 M.colors = require('kanagawa.colors').setup({
   terminalColors = 'true',
-  theme = "default"
+  theme = "dragon",
+  background = {
+                       -- map the value of 'background' option to a theme
+    dark = "dragon",     -- try "dragon" !
+    light = "lotus"
+  },
 })
 require('heirline').load_colors(M.colors)
 
@@ -35,12 +40,13 @@ local ViMode =
   -- them at initialisation time.
   static = {
     mode_names =
-    { -- change the strings if you like it vvvvverbose!
+    {
+      -- change the strings if you like it vvvvverbose!
       n = "N",
       no = "N?",
       nov = "N?",
       noV = "N?",
-      ["no\22"] = "N?",
+          ["no\22"] = "N?",
       niI = "Ni",
       niR = "Nr",
       niV = "Nv",
@@ -49,11 +55,11 @@ local ViMode =
       vs = "Vs",
       V = "V_",
       Vs = "Vs",
-      ["\22"] = "^V",
-      ["\22s"] = "^V",
+          ["\22"] = "^V",
+          ["\22s"] = "^V",
       s = "S",
       S = "S_",
-      ["\19"] = "^S",
+          ["\19"] = "^S",
       i = "I",
       ic = "Ic",
       ix = "Ix",
@@ -67,8 +73,8 @@ local ViMode =
       cv = "Ex",
       r = "...",
       rm = "M",
-      ["r?"] = "?",
-      ["!"] = "!",
+          ["r?"] = "?",
+          ["!"] = "!",
       t = "T",
     },
     mode_colors = {
@@ -76,14 +82,14 @@ local ViMode =
       i = "green",
       v = "cyan",
       V = "cyan",
-      ["\22"] = "cyan",
+          ["\22"] = "cyan",
       c = "orange",
       s = "purple",
       S = "purple",
-      ["\19"] = "purple",
+          ["\19"] = "purple",
       R = "orange",
       r = "orange",
-      ["!"] = "red",
+          ["!"] = "red",
       t = "red",
     }
   },
@@ -155,21 +161,21 @@ local InactiveStatusline =
   condition = function()
     return not conditions.is_active()
   end,
-
-  Separator, FileName, Align
+  Separator,
+  FileName,
+  Align
 }
 
 
 local TerminalStatusline =
 {
-
   condition = function()
     return conditions.buffer_matches({ buftype = { "terminal" } })
   end,
-
-
   -- Quickly add a condition to the ViMode to only show it when buffer is active!
-  { condition = conditions.is_active, ViMode, Separator }, TerminalName, Align,
+  { condition = conditions.is_active, ViMode, Separator },
+  TerminalName,
+  Align,
 }
 local SpecialStatusline =
 {
@@ -179,14 +185,18 @@ local SpecialStatusline =
       filetype = { "^git.*", "fugitive" },
     })
   end,
-
-  Separator, HelpFileName, Align
+  Separator,
+  HelpFileName,
+  Align
 }
 
 local StatusLines =
 {
-  SpecialStatusline, TerminalStatusline, InactiveStatusline, DefaultStatusline,
+  SpecialStatusline,
+  TerminalStatusline,
+  InactiveStatusline,
+  DefaultStatusline,
   fallthrough = false,
 }
-require("heirline").setup({statusline = StatusLines, tabline = TabLine})
+require("heirline").setup({ statusline = StatusLines, tabline = TabLine })
 return M

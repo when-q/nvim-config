@@ -24,11 +24,25 @@ vim.cmd
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.g['tex_conceal_frac'] = 1
+vim.g['python_highlight_all'] = 1
+
 vim.g['tex_flavor'] = 'lualatex'
 vim.g['tex_conceal'] = 'abdmg'
-vim.g['tex_conceal_frac'] = 1
+vim.g.vimtex_compiler_engine = 'lualatex'
+vim.g.vimtex_latexmk_continuous = 1
+vim.g.vimtex_view_method = 'skim'
 
-vim.g['python_highlight_all'] = 1
+vim.g.vimtex_compiler_latexmk = {
+  options = {
+    '-shell-escape',
+    '-file-line-error',
+    '-silent',
+    '-pv',
+    '-synctex=1',
+    '-interaction=nonstopmode'
+  }
+}
 
 vim.g.smartindent = 1
 set.conceallevel = 2
