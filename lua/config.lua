@@ -30,17 +30,20 @@ vim.g['python_highlight_all'] = 1
 vim.g['tex_flavor'] = 'lualatex'
 vim.g['tex_conceal'] = 'abdmg'
 vim.g.vimtex_compiler_engine = 'lualatex'
-vim.g.vimtex_latexmk_continuous = 1
 vim.g.vimtex_view_method = 'skim'
-
 vim.g.vimtex_compiler_latexmk = {
+  continuous = 1,
+ callback = 1,
+  executable = 'latexmk',
   options = {
     '-shell-escape',
     '-file-line-error',
     '-silent',
     '-pv',
+    '-file-line-error',
     '-synctex=1',
-    '-interaction=nonstopmode'
+--    '-interaction=nonstopmode',
+--    '-output-directory=output',
   }
 }
 
@@ -59,13 +62,15 @@ vim.g.coq_settings =
 }
 
 -- UltiSnip
-vim.g.UltiSnipsExpandTrigger = ' '
+--[[ vim.g.UltiSnipsExpandTrigger = ' '
 vim.g.UltiSnipsJumpForwardTrigger = ' '
 vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 vim.g.UltiSnipsSnippetDirectories = { os.getenv('HOME') .. '/.config/nvim/snips' }
-
+--]]
 -- Global
 Lsp_keymap = require('keymap.lsp_keymaps')
 
 Lsp = require('lspconfig')
 Coq = require("coq")
+vim.g.haskell_disable_TH = 1
+vim.g.haskell_classic_highlighting = 1

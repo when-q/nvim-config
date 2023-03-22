@@ -129,6 +129,7 @@ Lsp['lua_ls'].setup {
   capatibilites = Coq.lsp_ensure_capabilities(),
   handler = Handlers
 }
+
 --[[
 Lsp['mlir_lsp_server'].setup {
   on_attach = Lsp_keymap.on_attach,

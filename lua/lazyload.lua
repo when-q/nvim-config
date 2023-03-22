@@ -48,17 +48,17 @@ require('lazy').setup({
     event = 'InsertEnter',
   },
   { 'lervag/vimtex' },
-  {
+  --[[  {
     'SirVer/ultisnips',
     event = 'InsertEnter',
   },
-
+--]]
 
   { 'christoomey/vim-tmux-navigator' },
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = plugin.telescope_setup
+    config = plugin.telescope_setup,
   },
   {
     'vim-autoformat/vim-autoformat',
@@ -158,16 +158,29 @@ require('lazy').setup({
     event = "BufEnter",
   },
   {
-    'LukasPietzschmann/telescope-tabs',
-    dependencies = { 'nvim-telescope/telescope.nvim' },
-    config = function()
-      require 'telescope-tabs'.setup {
-        -- Your custom config :^)
-      }
-    end,
-    lazy = true
+    'tpope/vim-unimpaired',
+    keys = {'[', ']'},
   },
   {
-    'tpope/vim-unimpaired',
+    'MrcJkb/haskell-tools.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+    }, -- optional
+    config = lang.haskell_setup,
+    lazy = true,
   },
+  { 'raichoo/haskell-vim' , ft = {'hs'}},
+  {
+    "iurimateus/luasnip-latex-snippets.nvim",
+    -- replace "lervag/vimtex" with "nvim-treesitter/nvim-treesitter" if you're
+    -- using treesitter.
+    dependencies = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
+    config = function()
+      require 'luasnip-latex-snippets'.setup({ use_treesitter = true })
+    end,
+    -- treesitter is required for markdown
+    ft = { "tex", "markdown" },
+  },
+  {'JuliaEditorSupport/julia-vim', lazy = true}
 })

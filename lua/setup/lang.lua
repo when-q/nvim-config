@@ -1,4 +1,26 @@
 local M = {}
+function M.haskell_setup()
+  -- defaults
+  return require('haskell-tools').start_or_attach {
+    tools = {
+            -- haskell-tools options
+      codeLens = {
+        autoRefresh = true,
+      },
+      hoogle = {
+        mode = 'auto',
+      },
+      hover = {
+        stylize_markdown = true,
+      },
+    },
+    hls = {
+      on_attach = Lsp_keymap.on_attach,
+      capatibilites = Coq.lsp_ensure_capabilities(),
+    }
+  }
+end
+
 function M.lean_setup()
   require('lean').setup
   {
@@ -18,7 +40,8 @@ function M.tex_setup()
   require('texmagic').setup
   {
     engines = {
-      lualatex = { -- This is *not* one of the defaults, but it can be
+      lualatex = {
+                   -- This is *not* one of the defaults, but it can be
         -- called via magic comment if defined here
         executable = "latexmk",
         args = {
@@ -86,7 +109,6 @@ function M.clangd_setup()
           statement = "",
           ["template argument"] = "",
         },
-
         kind_icons = {
           Compound = "",
           Recovery = "",
