@@ -159,7 +159,7 @@ require('lazy').setup({
   },
   {
     'tpope/vim-unimpaired',
-    keys = {'[', ']'},
+    keys = { '[', ']' },
   },
   {
     'MrcJkb/haskell-tools.nvim',
@@ -170,7 +170,7 @@ require('lazy').setup({
     config = lang.haskell_setup,
     lazy = true,
   },
-  { 'raichoo/haskell-vim' , ft = {'hs'}},
+  { 'raichoo/haskell-vim',  ft = { 'hs' } },
   {
     "iurimateus/luasnip-latex-snippets.nvim",
     -- replace "lervag/vimtex" with "nvim-treesitter/nvim-treesitter" if you're
@@ -182,5 +182,11 @@ require('lazy').setup({
     -- treesitter is required for markdown
     ft = { "tex", "markdown" },
   },
-  {'JuliaEditorSupport/julia-vim', lazy = true}
+  { 'JuliaEditorSupport/julia-vim', lazy = true },
+  {
+    'rebelot/terminal.nvim',
+    config = function()
+      require("terminal").setup()
+    end
+  }
 })

@@ -33,7 +33,7 @@ vim.g.vimtex_compiler_engine = 'lualatex'
 vim.g.vimtex_view_method = 'skim'
 vim.g.vimtex_compiler_latexmk = {
   continuous = 1,
- callback = 1,
+  callback = 1,
   executable = 'latexmk',
   options = {
     '-shell-escape',
@@ -42,8 +42,8 @@ vim.g.vimtex_compiler_latexmk = {
     '-pv',
     '-file-line-error',
     '-synctex=1',
---    '-interaction=nonstopmode',
---    '-output-directory=output',
+    --    '-interaction=nonstopmode',
+    --    '-output-directory=output',
   }
 }
 

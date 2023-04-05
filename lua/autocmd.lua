@@ -28,9 +28,22 @@ vim.api.nvim_create_autocmd('TextYankPost',
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" },
   {
     group = vim.api.nvim_create_augroup('mlir-highlight', {}),
-    pattern = {'*.mlir', '*.xdsl'},
+    pattern = { '*.mlir', '*.xdsl' },
     callback = function()
       vim.cmd [[set ft=mlir]]
     end,
   })
 vim.cmd([[au FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif]])
+
+-- Htop with terminal.nvim
+local htop = require("terminal").terminal:new({
+    layout = { open_cmd = "float" },
+    cmd = { "htop" },
+    autoclose = true,
+})
+vim.api.nvim_create_user_command("Htop", function()
+    htop:toggle(nil, true)
+end, { nargs = "?" })
+vim.api.nvim_create_autocmd("TermOpen", {
+    command = [[setlocal nonumber norelativenumber winhl=Normal:NormalFloat]]
+})

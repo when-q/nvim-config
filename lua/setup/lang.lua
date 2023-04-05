@@ -3,7 +3,7 @@ function M.haskell_setup()
   -- defaults
   return require('haskell-tools').start_or_attach {
     tools = {
-            -- haskell-tools options
+      -- haskell-tools options
       codeLens = {
         autoRefresh = true,
       },
@@ -41,7 +41,7 @@ function M.tex_setup()
   {
     engines = {
       lualatex = {
-                   -- This is *not* one of the defaults, but it can be
+        -- This is *not* one of the defaults, but it can be
         -- called via magic comment if defined here
         executable = "latexmk",
         args = {
