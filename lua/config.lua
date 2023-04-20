@@ -1,5 +1,6 @@
 local set = vim.o
-
+vim.o.guifont = "Menlo:h18" -- text below applies for VimScript
+vim.g.neovide_cursor_animation_length = 0.13
 set.autoindent = true
 set.timeoutlen = 200
 set.tabstop = 4
@@ -51,15 +52,7 @@ vim.g.smartindent = 1
 set.conceallevel = 2
 
 vim.g.maplocalleader = ","
-vim.g.coq_settings =
-{
-  auto_start = 'shut-up',
-  keymap =
-  {
-    recommended = true,
-    jump_to_mark = "<c-m>",
-  },
-}
+
 
 -- UltiSnip
 --[[ vim.g.UltiSnipsExpandTrigger = ' '

@@ -32,19 +32,20 @@ require('lazy').setup({
   { 'rebelot/heirline.nvim' },
   {
     'ms-jpq/coq_nvim',
-    dependencies =
-    {
+    init = function ()
+      vim.g.coq_settings =
       {
-        'ms-jpq/coq.artifacts',
-        branch = 'artifacts',
-        lazy = true,
-      },
-      {
-        'ms-jpq/coq.thirdparty',
-        branch = '3p',
-        lazy = true,
+
+        clients={snippets={warn = {}}},
+        auto_start = 'shut-up',
+        keymap =
+        {
+          recommended = true,
+          jump_to_mark = "<c-m>",
+        },
       }
-    },
+    end,
+    branch = "coq",
     event = 'InsertEnter',
   },
   { 'lervag/vimtex' },
@@ -188,5 +189,5 @@ require('lazy').setup({
     config = function()
       require("terminal").setup()
     end
-  }
+  },
 })
