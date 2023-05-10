@@ -100,21 +100,5 @@ function M.diffview_which_key()
   wk.register(diffview_key)
 end
 
-function M.terminal_which_key()
-  local term_map = require("terminal.mappings")
-  vim.keymap.set({ "n", "x" }, "<leader>ts", term_map.operator_send, { expr = true, desc = "send operator" })
-  vim.keymap.set("n", "<leader>to", term_map.toggle, {desc = "Toggle Term"})
-  vim.keymap.set("n", "<leader>tO", term_map.toggle({ open_cmd = "enew" }), {desc = "Toggle enew"})
-  vim.keymap.set("n", "<leader>tr", term_map.run, {desc = "erun"})
-  vim.keymap.set("n", "<leader>tR", term_map.run(nil, { layout = { open_cmd = "enew" } }), {desc = "Run enew"})
-  vim.keymap.set("n", "<leader>tk", term_map.kill, {desc = "Kill Term"})
-  vim.keymap.set("n", "<leader>t]", term_map.cycle_next, {desc = "Next Term"})
-  vim.keymap.set("n", "<leader>t[", term_map.cycle_prev, {desc = "Prev Term"})
-  vim.keymap.set("n", "<leader>tl", term_map.move({ open_cmd = "belowright vnew" }), {desc = "Belowright vnew"})
-  vim.keymap.set("n", "<leader>tL", term_map.move({ open_cmd = "botright vnew" }), {desc = "botright vnew"})
-  vim.keymap.set("n", "<leader>th", term_map.move({ open_cmd = "belowright new" }), {desc = "belowright new"})
-  vim.keymap.set("n", "<leader>tH", term_map.move({ open_cmd = "botright new" }), {desc = "botright new"})
-  vim.keymap.set("n", "<leader>tf", term_map.move({ open_cmd = "float" }), {desc = "float"})
-end
 
 return M

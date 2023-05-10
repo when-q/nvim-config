@@ -185,12 +185,6 @@ require('lazy').setup({
   },
   { 'JuliaEditorSupport/julia-vim', lazy = true },
   {
-    'rebelot/terminal.nvim',
-    config = function()
-      require("terminal").setup()
-    end
-  },
-  {
     "neanias/everforest-nvim",
     version = false,
     lazy = false,

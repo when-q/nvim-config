@@ -31,9 +31,3 @@ which_key.trouble_which_key()
 which_key.undo_tscope_which_key()
 which_key.glance_which_key()
 which_key.diffview_which_key()
-which_key.terminal_which_key()
-
--- terminal.nvim
-vim.cmd [[
-  tnoremap <c-\><c-\> <c-\><c-n>
-]]
