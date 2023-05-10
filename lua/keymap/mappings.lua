@@ -18,7 +18,11 @@ vim.keymap.set({ 'x', 'o' }, 'gx', '<Plug>(leap-forward-till)', { noremap = true
 vim.keymap.set({ 'n', 'x', 'o' }, 'gX', '<Plug>(leap-backward-till)', { noremap = true, desc = "leap backward visual" })
 vim.keymap.set({ 'n', 'x', 'o' }, 'gc', '<Plug>(leap-cross-window)', { noremap = true, desc = "leap cross window" })
 
--- mind.nvim mapping
+-- orgmode.nvim mapping
+local default_note_dir = os.getenv('HOME') .. '$HOME/.config/org/note/'
+vim.keymap.set('n', '<leader>od',':edit '..default_note_dir..'default.org<cr>', {noremap = true, desc = "edit default org-note"})
+vim.keymap.set('n', '<leader>of',':edit '..default_note_dir..'agenda/<cr>', {noremap = true, desc = "edit default org-note"})
+vim.keymap.set('n', '<leader>ow', ':edit project.org<cr>', {noremap = true, desc = "edit workfolder org-note"})
 -- nmisc
 vim.keymap.set('n', ',v', '<c-v>')
 -- Which-key mapping

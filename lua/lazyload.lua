@@ -32,11 +32,10 @@ require('lazy').setup({
   { 'rebelot/heirline.nvim' },
   {
     'ms-jpq/coq_nvim',
-    init = function ()
+    init = function()
       vim.g.coq_settings =
       {
-
-        clients={snippets={warn = {}}},
+        clients = { snippets = { warn = {} } },
         auto_start = 'shut-up',
         keymap =
         {
@@ -87,6 +86,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     config = plugin.treesitter_setup,
     event = "BufEnter"
+
   },
   {
     'nvim-tree/nvim-tree.lua',
@@ -148,7 +148,7 @@ require('lazy').setup({
   },
   {
     'p00f/clangd_extensions.nvim',
-    ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+    ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "h" },
     config = lang.clangd_setup,
   },
   {
@@ -190,4 +190,42 @@ require('lazy').setup({
       require("terminal").setup()
     end
   },
+  {
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require("everforest").setup({
+        -- Your config here
+        disable_italic_comments = true,
+      })
+      require("everforest").load()
+    end,
+  },
+  {
+    'nvim-orgmode/orgmode',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+    config = function()
+      require('orgmode').setup_ts_grammar()
+      require('orgmode').setup {
+        org_agenda_files = { '~/.config/org/agenda/**/*' },
+        org_default_notes_file = '~/.config/org/note/default.org',
+      }
+    end
+  },
+  {
+    'akinsho/org-bullets.nvim',
+    config = function()
+      require('org-bullets').setup()
+    end
+  },
+  {
+    'lukas-reineke/headlines.nvim',
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config =  true
+  }
 })

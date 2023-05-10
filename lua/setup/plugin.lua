@@ -24,14 +24,16 @@ function M.tree_setup()
 end
 
 function M.treesitter_setup()
-  require 'nvim-treesitter.configs'.setup
-  {
-    highlight =
+  require 'nvim-treesitter.configs'.setup(
     {
-      enable = true,
-      additional_vim_regex_highlighting = false,
-    },
-  }
+      indent = { enable = true },
+      highlight =
+      {
+        enable = true,
+        additional_vim_regex_highlighting = {'org'},
+      },
+      ensure_installed = { 'org' }
+    })
 end
 
 function M.pair_setup()
@@ -130,9 +132,6 @@ end
 
 function M.trouble_setup()
   require("trouble").setup({
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
     use_diagnostic_signs = true,
   })
 end

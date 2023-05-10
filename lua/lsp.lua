@@ -130,10 +130,17 @@ Lsp['lua_ls'].setup {
   handler = Handlers
 }
 
---[[
+
 Lsp['mlir_lsp_server'].setup {
   on_attach = Lsp_keymap.on_attach,
   capatibilites = Coq.lsp_ensure_capabilities(),
-  handler = Handlers
+  handler = Handlers,
+}
+
+--[[
+Lsp['tblgen_lsp_server'].setup {
+  on_attach = Lsp_keymap.on_attach,
+  capatibilites = Coq.lsp_ensure_capabilities(),
+  handler = Handlers,
 }
 --]]

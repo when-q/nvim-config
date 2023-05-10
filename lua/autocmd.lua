@@ -25,9 +25,10 @@ vim.api.nvim_create_autocmd('TextYankPost',
       vim.highlight.on_yank { higroup = 'IncSearch', timeout = 400 }
     end,
   })
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" },
+local llvm_highlight = vim.api.nvim_create_augroup('llvm-highlight', {})
+vim.api.nvim_create_autocmd({ "FileType" },
   {
-    group = vim.api.nvim_create_augroup('mlir-highlight', {}),
+    group = llvm_highlight,
     pattern = { '*.mlir', '*.xdsl' },
     callback = function()
       vim.cmd [[set ft=mlir]]
@@ -37,13 +38,32 @@ vim.cmd([[au FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobu
 
 -- Htop with terminal.nvim
 local htop = require("terminal").terminal:new({
-    layout = { open_cmd = "float" },
-    cmd = { "htop" },
-    autoclose = true,
+  layout = { open_cmd = "float" },
+  cmd = { "htop" },
+  autoclose = true,
 })
+
 vim.api.nvim_create_user_command("Htop", function()
-    htop:toggle(nil, true)
+  htop:toggle(nil, true)
 end, { nargs = "?" })
 vim.api.nvim_create_autocmd("TermOpen", {
-    command = [[setlocal nonumber norelativenumber winhl=Normal:NormalFloat]]
+  command = [[setlocal nonumber norelativenumber winhl=Normal:NormalFloat]]
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = llvm_highlight,
+  pattern = { '*.td' },
+  callback = function()
+    vim.cmd [[set ft=tablegen]]
+  end,
+})
+vim.cmd [[highlight Headline1 guibg=#1e2718]]
+vim.cmd [[highlight Headline2 guibg=#21262d]]
+vim.cmd [[highlight CodeBlock guibg=#1c1c1c]]
+vim.cmd [[highlight Dash guibg=#D19A66 gui=bold]]
+
+require("headlines").setup {
+    org = {
+        headline_highlights = { "Headline1", "Headline2" },
+    },
+}
