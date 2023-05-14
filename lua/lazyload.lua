@@ -23,7 +23,6 @@ require('lazy').setup({
     'ms-jpq/coq_nvim',
     dependencies =
     {
-      { 'ms-jpq/coq.artifacts', branch = 'artifacts', lazy = true },
       { 'ms-jpq/coq.thirdparty', branch = '3p', lazy = true }
     },
   },
@@ -73,10 +72,13 @@ require('lazy').setup({
     'folke/which-key.nvim',
     config = plugin.which_key_setup,
   },
-  {'tpope/vim-unimpaired'},
+  {
+    'tpope/vim-unimpaired',
+    keys = { '[', ']' },
+  },
   {
     'lewis6991/gitsigns.nvim',
     config = plugin.gitsign_setup,
-event = "BufEnter",
+	event = "BufEnter",
   },
 })
