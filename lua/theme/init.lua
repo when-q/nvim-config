@@ -1,7 +1,6 @@
 vim.o.termguicolors = true
 vim.o.background = ""
 
---require("theme.line")
 require("theme.line")
 require 'kanagawa'.setup(
   {
@@ -15,7 +14,7 @@ require 'kanagawa'.setup(
     end
   })
 require 'nordic'.setup()
---vim.api.nvim_command [[colorscheme nordic]]
+vim.api.nvim_command [[colorscheme nordic]]
 --vim.cmd [[colorscheme kanagawa-wave]]
 --vim.api.nvim_command [[colorscheme everforest]]
 

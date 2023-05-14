@@ -53,7 +53,6 @@ set.conceallevel = 2
 
 vim.g.maplocalleader = ","
 
-
 -- UltiSnip
 --[[ vim.g.UltiSnipsExpandTrigger = ' '
 vim.g.UltiSnipsJumpForwardTrigger = ' '

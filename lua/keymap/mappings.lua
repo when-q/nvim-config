@@ -23,11 +23,11 @@ local default_note_dir = os.getenv('HOME') .. '$HOME/.config/org/note/'
 vim.keymap.set('n', '<leader>od',':edit '..default_note_dir..'default.org<cr>', {noremap = true, desc = "edit default org-note"})
 vim.keymap.set('n', '<leader>of',':edit '..default_note_dir..'agenda/<cr>', {noremap = true, desc = "edit default org-note"})
 vim.keymap.set('n', '<leader>ow', ':edit project.org<cr>', {noremap = true, desc = "edit workfolder org-note"})
+vim.keymap.set('n', ",\"", ":Telescope registers<cr>", {noremap = true, desc = "Telescope reg & paste"})
 -- nmisc
 vim.keymap.set('n', ',v', '<c-v>')
 -- Which-key mapping
 which_key.telescope_which_key()
 which_key.trouble_which_key()
-which_key.undo_tscope_which_key()
 which_key.glance_which_key()
 which_key.diffview_which_key()

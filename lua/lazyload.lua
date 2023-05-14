@@ -48,21 +48,11 @@ require('lazy').setup({
     event = 'InsertEnter',
   },
   { 'lervag/vimtex' },
-  --[[  {
-    'SirVer/ultisnips',
-    event = 'InsertEnter',
-  },
---]]
-
   { 'christoomey/vim-tmux-navigator' },
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = plugin.telescope_setup,
-  },
-  {
-    'vim-autoformat/vim-autoformat',
-    ft = 'py'
   },
   {
     'TimUntersberger/neogit',
@@ -139,14 +129,6 @@ require('lazy').setup({
     cmd = { "TodoTelescope" },
   },
   {
-    'debugloop/telescope-undo.nvim',
-    dependencies = { 'nvim-telescope/telescope.nvim' },
-    keys = { '<leader>u' },
-    config = function()
-      require("telescope").load_extension("undo")
-    end,
-  },
-  {
     'p00f/clangd_extensions.nvim',
     ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "h" },
     config = lang.clangd_setup,
@@ -195,7 +177,7 @@ require('lazy').setup({
         -- Your config here
         disable_italic_comments = true,
       })
-      require("everforest").load()
+--      require("everforest").load()
     end,
   },
   {
@@ -215,11 +197,13 @@ require('lazy').setup({
     'akinsho/org-bullets.nvim',
     config = function()
       require('org-bullets').setup()
-    end
+    end,
+    ft = {'org'}
   },
   {
     'lukas-reineke/headlines.nvim',
     dependencies = "nvim-treesitter/nvim-treesitter",
-    config =  true
+    config =  true,
+    ft = {'org'}
   }
 })

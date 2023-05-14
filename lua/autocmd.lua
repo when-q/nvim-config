@@ -29,7 +29,7 @@ local llvm_highlight = vim.api.nvim_create_augroup('llvm-highlight', {})
 vim.api.nvim_create_autocmd({ "FileType" },
   {
     group = llvm_highlight,
-    pattern = { '*.mlir', '*.xdsl' },
+    pattern = { '*.mlir'},
     callback = function()
       vim.cmd [[set ft=mlir]]
     end,
