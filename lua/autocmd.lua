@@ -26,10 +26,10 @@ vim.api.nvim_create_autocmd('TextYankPost',
     end,
   })
 local llvm_highlight = vim.api.nvim_create_augroup('llvm-highlight', {})
-vim.api.nvim_create_autocmd({ "FileType" },
+vim.api.nvim_create_autocmd({ 'BufRead','BufNewFile' },
   {
     group = llvm_highlight,
-    pattern = { '*.mlir'},
+    pattern = { '*.mlir', '*.xdsl'},
     callback = function()
       vim.cmd [[set ft=mlir]]
     end,
@@ -43,13 +43,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.cmd [[set ft=tablegen]]
   end,
 })
-vim.cmd [[highlight Headline1 guibg=#1e2718]]
-vim.cmd [[highlight Headline2 guibg=#21262d]]
-vim.cmd [[highlight CodeBlock guibg=#1c1c1c]]
-vim.cmd [[highlight Dash guibg=#D19A66 gui=bold]]
-
-require("headlines").setup {
-    org = {
-        headline_highlights = { "Headline1", "Headline2" },
-    },
-}

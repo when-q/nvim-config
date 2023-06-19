@@ -14,9 +14,10 @@ require 'kanagawa'.setup(
     end
   })
 require 'nordic'.setup()
-vim.api.nvim_command [[colorscheme nordic]]
+--vim.cmd[[colorscheme nordic]]
 --vim.cmd [[colorscheme kanagawa-wave]]
---vim.api.nvim_command [[colorscheme everforest]]
+--require("kanagawa").load("dragon")
+--vim.cmd[[colorscheme everforest]]
 
 --vim.g['spring_night_high_contrast'] = 1
 vim.g['showtabline'] = 2

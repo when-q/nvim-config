@@ -51,7 +51,9 @@ require('lazy').setup({
   { 'christoomey/vim-tmux-navigator' },
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
     config = plugin.telescope_setup,
   },
   {
@@ -118,7 +120,7 @@ require('lazy').setup({
     'folke/trouble.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
     config = plugin.trouble_setup,
-    keys = { "<leader>t" },
+    keys = { "<leader>q" },
     cmd = { 'TroubleToggle' },
   },
   {
@@ -177,7 +179,7 @@ require('lazy').setup({
         -- Your config here
         disable_italic_comments = true,
       })
---      require("everforest").load()
+      require("everforest").load()
     end,
   },
   {
@@ -198,12 +200,6 @@ require('lazy').setup({
     config = function()
       require('org-bullets').setup()
     end,
-    ft = {'org'}
+    ft = { 'org' }
   },
-  {
-    'lukas-reineke/headlines.nvim',
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config =  true,
-    ft = {'org'}
-  }
 })

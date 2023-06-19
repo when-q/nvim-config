@@ -22,8 +22,8 @@ vim.cmd
 	runtime macros/matchit.vim
 ]]
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+--vim.g.loaded_netrw = 1
+--vim.g.loaded_netrwPlugin = 1
 
 vim.g['tex_conceal_frac'] = 1
 vim.g['python_highlight_all'] = 1

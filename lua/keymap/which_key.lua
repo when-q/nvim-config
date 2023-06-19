@@ -18,7 +18,7 @@ function M.telescope_which_key()
       h = { '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', "Find Help", { noremap = true } },
       o = { '<cmd>lua require(\'telescope.builtin\').oldfiles()<cr>', "Search Old File", { noremap = true } },
       d = { '<cmd>TodoTelescope<cr>', "Todo in Telescope", { noremap = true } },
-      t = { ':Telescope treesitter<cr>', "Find Treesitter Obj", { noremap = true } }
+      t = { '<cmd>lua require(\'telescope.builtin\').treesitter()<cr>', "Find Treesitter Obj", { noremap = true } }
     },
   }
   wk.register(telescope_which_key, wk_opts)

@@ -13,8 +13,7 @@ M.colors = require('kanagawa.colors').setup({
   terminalColors = 'true',
   theme = "dragon",
   background = {
-                       -- map the value of 'background' option to a theme
-    dark = "wave",     -- try "dragon" !
+    dark = "dragon",     -- try "dragon" !
     light = "lotus"
   },
 })
