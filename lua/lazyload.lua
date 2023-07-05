@@ -57,7 +57,7 @@ require('lazy').setup({
     config = plugin.telescope_setup,
   },
   {
-    'TimUntersberger/neogit',
+    'NeogitOrg/neogit',
     dependencies =
     {
       'nvim-lua/plenary.nvim',
@@ -179,7 +179,7 @@ require('lazy').setup({
         -- Your config here
         disable_italic_comments = true,
       })
-      require("everforest").load()
+--      require("everforest").load()
     end,
   },
   {
