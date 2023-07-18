@@ -122,15 +122,24 @@ function M.telescope_setup()
   local present, telescope = pcall(require, "telescope")
 
   vim.cmd [[
-		highlight TelescopePromptBorder guifg=#eeeeee      guibg=none     gui=none
-		highlight TelescopeResultsBorder guifg=#eeeeee      guibg=none     gui=italic
-		highlight TelescopePreviewBorder guifg=#eeeeee      guibg=none     gui=none
-	]]
+    highlight TelescopePromptBorder guifg=#eeeeee      guibg=none     gui=none
+    highlight TelescopeResultsBorder guifg=#eeeeee      guibg=none     gui=italic
+    highlight TelescopePreviewBorder guifg=#eeeeee      guibg=none     gui=none
+  ]]
 
   local options = require("setup.utils.tscope").telescope_options()
   telescope.setup(options)
 end
 function M.gitsign_setup()
-      require('gitsigns').setup()
+  require('gitsigns').setup()
 end
+function M.registers_setup()
+  require("registers").setup({
+	bind_keys = {
+	  normal = false, 
+	  insert = false
+	}
+  })
+end
+
 return M

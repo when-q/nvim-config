@@ -27,6 +27,9 @@ vim.keymap.set('n', 'gS', '<Plug>(leap-backward-to)')
 vim.keymap.set({ 'x', 'o' }, 'gx', '<Plug>(leap-forward-till)', { noremap = true })
 vim.keymap.set({ 'n', 'x', 'o' }, 'gX', '<Plug>(leap-backward-till)', { noremap = true })
 vim.keymap.set({ 'n', 'x', 'o' }, 'gc', '<Plug>(leap-cross-window)', { noremap = true })
+-- Register.nvim Mapping
+vim.keymap.set('n', "\"\"", require("registers").show_window({ mode = "motion" }),
+  { noremap = true, desc = "reg floating window" })
 -- misc
 vim.keymap.set('n', ',v', '<c-v>')
 -- Which-key mapping

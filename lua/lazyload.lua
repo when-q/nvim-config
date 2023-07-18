@@ -21,10 +21,6 @@ require('lazy').setup({
   {'rebelot/heirline.nvim'},
   {
     'ms-jpq/coq_nvim',
-    dependencies =
-    {
-      { 'ms-jpq/coq.thirdparty', branch = '3p', lazy = true }
-    },
   },
 
   {'neovim/nvim-lspconfig', lazy = true},
@@ -81,4 +77,12 @@ require('lazy').setup({
     config = plugin.gitsign_setup,
 	event = "BufEnter",
   },
+  {
+    "tversteeg/registers.nvim",
+    config = plugin.registers_setup,
+    keys = {
+      { "\"", mode = { "n", "v" } },
+    },
+    cmd = "Registers",
+  }
 })
