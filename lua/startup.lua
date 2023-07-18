@@ -65,7 +65,8 @@ fun! Start()
     nnoremap <buffer><silent> i :enew <bar> startinsert<CR>
     nnoremap <buffer><silent> I :enew <bar> startinsert<CR>
     nnoremap <buffer><silent> o :enew <bar> startinsert<CR>
-    nnoremap <buffer><silent> a :enew <bar> startinsert<CR>
+    nnoremap <buffer><silent> o :enew <bar> startinsert<CR>
+    nnoremap <buffer><silent> p :enew <bar> pu<CR>
     nnoremap <buffer><silent> <C-n> :enew <bar>  NvimTreeToggle<CR>
 endfun
 

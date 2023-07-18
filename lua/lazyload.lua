@@ -179,7 +179,7 @@ require('lazy').setup({
         -- Your config here
         disable_italic_comments = true,
       })
---      require("everforest").load()
+      --      require("everforest").load()
     end,
   },
   {
@@ -193,7 +193,8 @@ require('lazy').setup({
         org_agenda_files = { '~/.config/org/agenda/**/*' },
         org_default_notes_file = '~/.config/org/note/default.org',
       }
-    end
+    end,
+    ft = { "org" }
   },
   {
     'akinsho/org-bullets.nvim',
@@ -202,4 +203,15 @@ require('lazy').setup({
     end,
     ft = { 'org' }
   },
+  {
+    "tversteeg/registers.nvim",
+    config = function()
+      require("registers").setup({ bind_keys = { normal = false, insert = false } })
+    end,
+    keys = {
+      { "\"", mode = { "n", "v" } },
+    },
+    cmd = "Registers",
+  }
+
 })
