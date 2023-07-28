@@ -58,14 +58,25 @@ function M.tex_setup()
 end
 
 function M.clangd_setup()
-  require("clangd_extensions").setup {
-    server = {
-      -- options to pass to nvim-lspconfig
-      -- i.e. the arguments to require("lspconfig").clangd.setup({})
-      on_attach = Lsp_keymap.on_attach,
-      capabilities = Coq.lsp_ensure_capabilities(),
-      handler = Handlers
+  local clangd_defaults = require "lspconfig.server_configurations.clangd"
+  local clangd_configs = vim.tbl_deep_extend("force", clangd_defaults["default_config"], {
+    -- on_attach = on_attach_16,
+    -- on_attach = on_attach,
+    cmd = {
+      "clangd",
+      "-j=4",
+      "--background-index",
+      "--clang-tidy",
+      "--fallback-style=llvm",
+      "--all-scopes-completion",
+      "--completion-style=detailed",
+      "--header-insertion=iwyu",
+      "--header-insertion-decorators",
+      "--pch-storage=memory",
     },
+  })
+  require("clangd_extensions").setup {
+    server = clangd_configs,
     extensions = {
       -- defaults:
       -- Automatically set inlay hints (type hints)

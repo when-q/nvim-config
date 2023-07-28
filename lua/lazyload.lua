@@ -19,19 +19,15 @@ require('lazy').setup({
   { 'rebelot/kanagawa.nvim', event = "VeryLazy" },
   {
     'AlexvZyl/nordic.nvim',
-    event = "VeryLazy",
-    config = function()
-      require 'nordic'.setup {
-        telescope = {
-          -- Available styles: `classic`, `flat`.
-          style = 'flat'
-        },
-      }
-    end
+    event = "VeryLazy"
   },
   { 'rebelot/heirline.nvim' },
   {
     'ms-jpq/coq_nvim',
+    dependencies = {
+      'ms-jpq/coq.thirdparty',
+      'ms-jpq/coq.artifacts'
+    },
     init = function()
       vim.g.coq_settings =
       {
@@ -68,7 +64,13 @@ require('lazy').setup({
     event = "VeryLazy",
   },
 
-  { 'neovim/nvim-lspconfig' },
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'simrat39/rust-tools.nvim',
+    },
+    -- setup in lsp
+  },
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
@@ -155,7 +157,15 @@ require('lazy').setup({
     config = lang.haskell_setup,
     lazy = true,
   },
-  { 'raichoo/haskell-vim',  ft = { 'hs' } },
+  { 'raichoo/haskell-vim',          ft = { 'hs' } },
+  --[[ {
+    "L3MON4D3/LuaSnip",
+    version = "2.*",
+    build = "make install_jsregexp",
+    config = plugin.luasnip_setup,
+  },
+  { "mendes-davi/coq_luasnip" },
+--]]
   {
     "iurimateus/luasnip-latex-snippets.nvim",
     -- replace "lervag/vimtex" with "nvim-treesitter/nvim-treesitter" if you're
@@ -212,6 +222,14 @@ require('lazy').setup({
       { "\"", mode = { "n", "v" } },
     },
     cmd = "Registers",
+  },
+  { 'tpope/vim-dispatch' },
+  {
+    'mfussenegger/nvim-dap',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'rcarriga/nvim-dap-ui'
+    },
+    config = plugin.nvim_daps
   }
-
 })

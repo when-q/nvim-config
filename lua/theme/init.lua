@@ -1,6 +1,5 @@
 vim.o.termguicolors = true
 vim.o.background = ""
-
 require("theme.line")
 require 'kanagawa'.setup(
   {
@@ -13,11 +12,14 @@ require 'kanagawa'.setup(
       }
     end
   })
---require 'nordic'.setup()
---vim.cmd[[colorscheme nordic]]
---vim.cmd [[colorscheme kanagawa-wave]]
-require("kanagawa").load("dragon")
---vim.cmd[[colorscheme everforest]]
+vim.o.background = "dark"
+require "nordic".setup {
+  bright_border = true,
+  override = {
+    WinSeparator = { fg = "#C8C093", bg = "NONE" }, --oldwhite, bg
+  },
+  swap_backgrounds = false,
+}
 
---vim.g['spring_night_high_contrast'] = 1
+require "nordic".load()
 vim.g['showtabline'] = 2

@@ -66,3 +66,8 @@ Lsp = require('lspconfig')
 Coq = require("coq")
 vim.g.haskell_disable_TH = 1
 vim.g.haskell_classic_highlighting = 1
+vim.g.ale_linters = {
+  python = {'ruff'},
+  cpp    = {'clang-tidy'}
+}
+set.fillchars= "vert: ,eob: "

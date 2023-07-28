@@ -34,7 +34,9 @@ vim.api.nvim_create_autocmd({ 'BufRead','BufNewFile' },
       vim.cmd [[set ft=mlir]]
     end,
   })
+  
 vim.cmd([[au FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif]])
+
 
 vim.api.nvim_create_autocmd("FileType", {
   group = llvm_highlight,

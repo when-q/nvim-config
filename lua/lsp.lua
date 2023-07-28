@@ -7,13 +7,13 @@ vim.cmd
 
 local border = {
   { "🭽", "FloatBorder" },
-  { "▔",  "FloatBorder" },
+  { "▔", "FloatBorder" },
   { "🭾", "FloatBorder" },
-  { "▕",  "FloatBorder" },
+  { "▕", "FloatBorder" },
   { "🭿", "FloatBorder" },
-  { "▁",  "FloatBorder" },
+  { "▁", "FloatBorder" },
   { "🭼", "FloatBorder" },
-  { "▏",  "FloatBorder" },
+  { "▏", "FloatBorder" },
 }
 
 
@@ -136,7 +136,14 @@ Lsp['mlir_lsp_server'].setup {
   capatibilites = Coq.lsp_ensure_capabilities(),
   handler = Handlers,
 }
+local opts = {
+}
+require('rust-tools').setup({server = {
+  on_attach = Lsp_keymap.on_attach,
+  capatibilites = Coq.lsp_ensure_capabilities(),
+  handler = Handlers,
 
+}})
 --[[
 Lsp['tblgen_lsp_server'].setup {
   on_attach = Lsp_keymap.on_attach,
