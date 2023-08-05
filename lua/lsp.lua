@@ -78,7 +78,7 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -138,12 +138,14 @@ Lsp['mlir_lsp_server'].setup {
 }
 local opts = {
 }
-require('rust-tools').setup({server = {
-  on_attach = Lsp_keymap.on_attach,
-  capatibilites = Coq.lsp_ensure_capabilities(),
-  handler = Handlers,
+require('rust-tools').setup({
+  server = {
+    on_attach = Lsp_keymap.on_attach,
+    capatibilites = Coq.lsp_ensure_capabilities(),
+    handler = Handlers,
 
-}})
+  }
+})
 --[[
 Lsp['tblgen_lsp_server'].setup {
   on_attach = Lsp_keymap.on_attach,

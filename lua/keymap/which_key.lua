@@ -14,10 +14,10 @@ function M.telescope_which_key()
       name = "+Telescope", -- optional group name
       f = { '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', "Find File", { noremap = true } },
       g = { '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', "Grep content", { noremap = true } },
---      b = { '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', "Find Buffer", { noremap = true } },
+      --      b = { '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', "Find Buffer", { noremap = true } },
       h = { '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', "Find Help", { noremap = true } },
       o = { '<cmd>lua require(\'telescope.builtin\').oldfiles()<cr>', "Search Old File", { noremap = true } },
-      d = { '<cmd>TodoTelescope<cr>', "Todo in Telescope", { noremap = true } },
+      d = { '<cmd>TodoTelescope<cr>', "Todo Telescope", { noremap = true } },
       t = { '<cmd>lua require(\'telescope.builtin\').treesitter()<cr>', "Find Treesitter Obj", { noremap = true } }
     },
   }
@@ -63,8 +63,6 @@ function M.trouble_which_key()
   wk.register(trouble_keys, wk_opts)
 end
 
-
-
 function M.diffview_which_key()
   local diffview_key = {
     ['<leader>d'] = {
@@ -76,6 +74,5 @@ function M.diffview_which_key()
   }
   wk.register(diffview_key)
 end
-
 
 return M

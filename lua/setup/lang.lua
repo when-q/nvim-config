@@ -62,6 +62,9 @@ function M.clangd_setup()
   local clangd_configs = vim.tbl_deep_extend("force", clangd_defaults["default_config"], {
     -- on_attach = on_attach_16,
     -- on_attach = on_attach,
+    on_attach = Lsp_keymap.on_attach,
+    capatibilites = Coq.lsp_ensure_capabilities(),
+    handler = Handlers,
     cmd = {
       "clangd",
       "-j=4",

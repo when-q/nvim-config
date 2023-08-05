@@ -18,6 +18,10 @@ vim.opt.runtimepath:prepend(lazypath)
 require('lazy').setup({
   { 'rebelot/kanagawa.nvim', event = "VeryLazy" },
   {
+    'yorik1984/newpaper.nvim',
+    event = "VeryLazy"
+  },
+  {
     'AlexvZyl/nordic.nvim',
     event = "VeryLazy"
   },
@@ -50,6 +54,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
+    keys = { '<leader>' },
     config = plugin.telescope_setup,
   },
   {
@@ -61,7 +66,6 @@ require('lazy').setup({
     },
     cmd = "Neogit",
     config = plugin.neogit_setup,
-    event = "VeryLazy",
   },
 
   {
@@ -107,11 +111,6 @@ require('lazy').setup({
   {
     'ggandor/leap.nvim',
     config = plugin.leap_setup
-  },
-  {
-    'ShinKage/idris2-nvim',
-    dependencies = { 'MunifTanjim/nui.nvim', lazy = true },
-    ft = { 'idr' }
   },
   {
     'folke/which-key.nvim',
@@ -223,13 +222,28 @@ require('lazy').setup({
     },
     cmd = "Registers",
   },
-  { 'tpope/vim-dispatch' },
+  {
+    'tpope/vim-dispatch',
+    cmd = {
+      "Dispatch",
+      "Make"
+    }
+  },
   {
     'mfussenegger/nvim-dap',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'rcarriga/nvim-dap-ui'
     },
-    config = plugin.nvim_daps
-  }
+    config = plugin.nvim_daps,
+    keys = { '<leader>' }
+  },
+  { 'rose-pine/neovim', name = 'rose-pine' },
+  {
+    "nyoom-engineering/oxocarbon.nvim"
+    -- Add in any other configuration;
+    --   event = foo,
+    --   config = bar
+    --   end,
+  },
 })

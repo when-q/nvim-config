@@ -20,6 +20,8 @@ require "nordic".setup {
   },
   swap_backgrounds = false,
 }
-
-require "nordic".load()
+--require("newpaper").setup()
+--vim.cmd[[colorscheme newpaper]]
+--require "nordic".load()
+vim.cmd[[colorscheme rose-pine-main]]
 vim.g['showtabline'] = 2
