@@ -44,32 +44,7 @@ function M.pair_setup()
 end
 
 function M.neogit_setup()
-  require("neogit").setup
-  {
-    auto_refresh = true,
-    disable_builtin_notifications = false,
-    use_magit_keybindings = false,
-    -- Change the default way of opening neogit
-    kind = "tab",
-    -- Change the default way of opening the commit popup
-    -- customize displayed signs
-    integrations =
-    {
-      diffview = true
-    },
-    -- Setting any section to `false` will make the section not render at all
-    sections =
-    {
-      untracked = { folded = false },
-      unstaged = { folded = false },
-      staged = { folded = false },
-      stashes = { folded = true },
-      unpulled = { folded = true },
-      unmerged = { folded = false },
-      recent = { folded = true },
-    },
-    -- override/add mappings
-  }
+  require("neogit").setup()
 end
 
 function M.glow_setup()
