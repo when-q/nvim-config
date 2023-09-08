@@ -1,25 +1,4 @@
 local M = {}
-function M.haskell_setup()
-  -- defaults
-  return require('haskell-tools').start_or_attach {
-    tools = {
-      -- haskell-tools options
-      codeLens = {
-        autoRefresh = true,
-      },
-      hoogle = {
-        mode = 'auto',
-      },
-      hover = {
-        stylize_markdown = true,
-      },
-    },
-    hls = {
-      on_attach = Lsp_keymap.on_attach,
-      capatibilites = Coq.lsp_ensure_capabilities(),
-    }
-  }
-end
 
 function M.lean_setup()
   require('lean').setup
@@ -78,7 +57,7 @@ function M.clangd_setup()
       "--pch-storage=memory",
     },
   })
-  require("clangd_extensions").setup {
+  require("clangd_extensions").setup ({
     server = clangd_configs,
     extensions = {
       -- defaults:
@@ -143,7 +122,7 @@ function M.clangd_setup()
         border = "none",
       },
     },
-  }
+  })
 end
 
 return M

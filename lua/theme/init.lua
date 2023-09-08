@@ -21,7 +21,7 @@ require "nordic".setup {
   swap_backgrounds = false,
 }
 --require("newpaper").setup()
---vim.cmd[[colorscheme newpaper]]
---require "nordic".load()
-vim.cmd[[colorscheme rose-pine-main]]
+require("kanagawa").load()
+--vim.cmd[[colorscheme kanagawa]]
+-- require "nordic".load()
 vim.g['showtabline'] = 2

@@ -1,6 +1,7 @@
 local set = vim.o
-vim.o.guifont = "Menlo:h18" -- text below applies for VimScript
-vim.g.neovide_cursor_animation_length = 0.13
+vim.o.foldcolumn = '1'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
 set.autoindent = true
 set.timeoutlen = 200
 set.tabstop = 4
@@ -20,6 +21,7 @@ vim.cmd
 [[
 	autocmd FileType vim let b:vcm_tab_complete = 'omni'
 	runtime macros/matchit.vim
+  set tags+=~/.local/include/tags
 ]]
 
 --vim.g.loaded_netrw = 1
@@ -66,8 +68,4 @@ Lsp = require('lspconfig')
 Coq = require("coq")
 vim.g.haskell_disable_TH = 1
 vim.g.haskell_classic_highlighting = 1
-vim.g.ale_linters = {
-  python = {'ruff'},
-  cpp    = {'clang-tidy'}
-}
-set.fillchars= "vert: ,eob: "
+set.fillchars = "vert: ,eob: "

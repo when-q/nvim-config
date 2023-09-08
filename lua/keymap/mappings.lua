@@ -23,6 +23,8 @@ vim.keymap.set({ 'x', 'o' }, 'gx', '<Plug>(leap-forward-till)', { noremap = true
 vim.keymap.set({ 'n', 'x', 'o' }, 'gX', '<Plug>(leap-backward-till)', { noremap = true, desc = "leap backward visual" })
 vim.keymap.set({ 'n', 'x', 'o' }, 'gc', '<Plug>(leap-cross-window)', { noremap = true, desc = "leap cross window" })
 
+-- todo.nvim setup
+vim.keymap.set("n", "<leader>qt", "<Cmd>exe ':TodoTrouble cwd=' .. fnameescape(expand('%:p'))<CR>", {desc = "search TODOs in current buffer"})
 -- orgmode.nvim mapping
 local default_note_dir = os.getenv('HOME') .. '$HOME/.config/org/note/'
 vim.keymap.set('n', '<leader>od', ':edit ' .. default_note_dir .. 'default.org<cr>',

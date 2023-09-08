@@ -84,7 +84,6 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     config = plugin.treesitter_setup,
     event = "BufEnter"
-
   },
   {
     'nvim-tree/nvim-tree.lua',
@@ -129,7 +128,7 @@ require('lazy').setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = plugin.todo_setup,
     keys = { "<leader>f" },
-    cmd = { "TodoTelescope" },
+    cmd = { "TodoTelescope", "TodoTrouble" },
   },
   {
     'p00f/clangd_extensions.nvim',
@@ -147,17 +146,7 @@ require('lazy').setup({
     'tpope/vim-unimpaired',
     keys = { '[', ']' },
   },
-  {
-    'MrcJkb/haskell-tools.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-    }, -- optional
-    config = lang.haskell_setup,
-    lazy = true,
-  },
-  { 'raichoo/haskell-vim',          ft = { 'hs' } },
-  --[[ {
+    --[[ {
     "L3MON4D3/LuaSnip",
     version = "2.*",
     build = "make install_jsregexp",
@@ -176,7 +165,7 @@ require('lazy').setup({
     -- treesitter is required for markdown
     ft = { "tex", "markdown" },
   },
-  { 'JuliaEditorSupport/julia-vim', lazy = true },
+  --{ 'JuliaEditorSupport/julia-vim', lazy = true },
   {
     "neanias/everforest-nvim",
     version = false,
@@ -240,10 +229,8 @@ require('lazy').setup({
   },
   { 'rose-pine/neovim', name = 'rose-pine' },
   {
-    "nyoom-engineering/oxocarbon.nvim"
-    -- Add in any other configuration;
-    --   event = foo,
-    --   config = bar
-    --   end,
-  },
+    'numToStr/Comment.nvim',
+    opts = {},
+    keys = {'gc'},
+  }
 })
