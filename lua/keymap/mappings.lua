@@ -49,6 +49,9 @@ vim.cmd [[
   nnoremap <silent> ,r <Cmd>lua require'dap'.run_last()<CR>
   nnoremap <silent> <leader>r <Cmd>lua require'dapui'.toggle()<CR>
 ]]
+
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds, {desc = "Open All Folds"})
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, {desc = "Close All Folds"})
 -- Which-key mapping
 which_key.telescope_which_key()
 which_key.trouble_which_key()

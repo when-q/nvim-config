@@ -57,6 +57,25 @@ require('lazy').setup({
     keys = { '<leader>' },
     config = plugin.telescope_setup,
   },
+
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make' 
+  },
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      -- calling `setup` is optional for customization
+      require("fzf-lua").setup({
+        winopts = {
+          -- Use **only one** of the below options
+          split = "belowright vnew" -- open in split right of current window
+        },
+      })
+    end
+  },
   {
     'NeogitOrg/neogit',
     dependencies =
@@ -232,5 +251,79 @@ require('lazy').setup({
     'numToStr/Comment.nvim',
     opts = {},
     keys = {'gc'},
-  }
+  },
+  {
+      "nvim-neorg/neorg",
+      build = ":Neorg sync-parsers",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      config = function()
+        require("neorg").setup {
+          load = {
+            ["core.defaults"] = {}, -- Loads default behaviour
+            ["core.qol.toc"] = {},
+            ["core.qol.todo_items"] = {},
+            ["core.looking-glass"] = {},
+            ["core.concealer"] = {
+              config = {
+                  icons = {
+                    todo ={
+                      undone = {icon = " "},
+                      on_hold = {icon = "="},
+                    },
+                },
+              }, 
+            },
+            ["core.journal"] = {
+              config = {
+                strategy = "flat",
+                workspace = "Notes",
+              },
+            },
+            ["core.dirman"] = { -- Manages Neorg workspaces
+              config = {
+                workspaces = {
+                  notes = "~/notes",
+                },
+              },
+            },
+          },
+        }
+      end,
+    },
+    {
+      'kevinhwang91/nvim-ufo', 
+      dependencies = {'kevinhwang91/promise-async'},
+      opts = {
+        provider_selector = function(bufnr, filetype, buftype)
+            return {'treesitter', 'indent'}
+        end,
+        fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
+          local newVirtText = {}
+          local suffix = (' 󰁂 %d '):format(endLnum - lnum)
+          local sufWidth = vim.fn.strdisplaywidth(suffix)
+          local targetWidth = width - sufWidth
+          local curWidth = 0
+          for _, chunk in ipairs(virtText) do
+              local chunkText = chunk[1]
+              local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+              if targetWidth > curWidth + chunkWidth then
+                  table.insert(newVirtText, chunk)
+              else
+                  chunkText = truncate(chunkText, targetWidth - curWidth)
+                  local hlGroup = chunk[2]
+                  table.insert(newVirtText, {chunkText, hlGroup})
+                  chunkWidth = vim.fn.strdisplaywidth(chunkText)
+                  -- str width returned from truncate() may less than 2nd argument, need padding
+                  if curWidth + chunkWidth < targetWidth then
+                      suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+                  end
+                  break
+              end
+              curWidth = curWidth + chunkWidth
+          end
+          table.insert(newVirtText, {suffix, 'MoreMsg'})
+          return newVirtText
+        end,
+      },
+    }
 })
